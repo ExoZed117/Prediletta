@@ -1,15 +1,16 @@
 import './Header.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
-const Header = () => {
+const Header = ({ scrolled, dark }) => {
   return (
-    <header className="header">
+    <header className={`header ${scrolled ? 'scrolled' : ''} ${dark ? 'dark' : ''}`}>
       <div className="header-container">
-        {/* Logo simple y elegante */}
+
         <div className="logo">
           <span>PREDILETTA</span>
         </div>
         
-        {/* Navegación minimalista */}
         <nav className="nav">
           <ul>
             <li><a href="#inicio" className="nav-link">INICIO</a></li>
@@ -19,10 +20,12 @@ const Header = () => {
           </ul>
         </nav>
 
-        {/* Botón de acción */}
         <div className="header-actions">
-          <button className="reservation-btn">RESERVAR</button>
+          <button className="cart-btn">
+            <FontAwesomeIcon icon={faCartShopping} className="cart-icon" />
+          </button>
         </div>
+
       </div>
     </header>
   );

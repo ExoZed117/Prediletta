@@ -4,58 +4,44 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        <div className="footer-main">
+        <div className="footer-content">
           <div className="footer-brand">
             <div className="logo">
-              <div className="logo-icon">☕</div>
-              <span className="logo-text">PREDILETTA</span>
+              <span>PREDILETTA</span>
             </div>
             <p className="footer-description">
-              Donde el arte del café se encuentra con la excelencia. 
-              Cada taza es una experiencia única.
+              Donde el arte del café se encuentra con la excelencia.
             </p>
-            <div className="social-links">
-              <a href="#" className="social-link">Instagram</a>
-              <a href="#" className="social-link">Facebook</a>
-              <a href="#" className="social-link">Twitter</a>
-            </div>
           </div>
           
           <div className="footer-links">
             <div className="link-group">
-              <h4>Menú</h4>
-              <a href="#">Cafés Especiales</a>
-              <a href="#">Pastelería</a>
-              <a href="#">Desayunos</a>
-              <a href="#">Bebidas</a>
+              <h4>HORARIOS</h4>
+              <p>Lunes - Viernes: 7:00 - 21:00</p>
+              <p>Sábado - Domingo: 8:00 - 22:00</p>
             </div>
             
             <div className="link-group">
-              <h4>Información</h4>
-              <a href="#">Sobre Nosotros</a>
-              <a href="#">Galería</a>
-              <a href="#">Eventos</a>
-              <a href="#">Blog</a>
+              <h4>CONTACTO</h4>
+              <p>Av. Principal 123</p>
+              <p>Ciudad, País</p>
+              <p>+1 234 567 890</p>
+              <p>hola@prediletta.com</p>
             </div>
             
             <div className="link-group">
-              <h4>Contacto</h4>
-              <a href="#">Reservaciones</a>
-              <a href="#">Ubicación</a>
-              <a href="#">Tel: +1 234 567 890</a>
-              <a href="#">Email: hola@prediletta.com</a>
+              <h4>SÍGUENOS</h4>
+              <div className="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+              </div>
             </div>
           </div>
         </div>
         
         <div className="footer-bottom">
-          <div className="footer-info">
-            <p>Horario: Lunes a Domingo • 7:00 - 22:00</p>
-            <p>Ubicación: Av. Principal 123, Ciudad</p>
-          </div>
-          <div className="footer-copyright">
-            <p>&copy; 2024 Prediletta. Todos los derechos reservados.</p>
-          </div>
+          <p>&copy; 2025 PREDILETTA. TODOS LOS DERECHOS RESERVADOS.</p>
         </div>
       </div>
     </footer>
