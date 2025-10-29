@@ -6,36 +6,51 @@ export default function About() {
       <div className="about-container">
         <div className="about-content">
           <div className="section-header">
-            <h2>SOBRE NOSOTROS</h2>
+            <h2>CAFETERÍA PREDILETTA 1825</h2>
             <div className="section-divider"></div>
+            <p>Más que café, momentos para compartir</p>
           </div>
           
           <div className="about-grid">
             <div className="about-text">
-              <h3>MÁS QUE UNA CAFETERÍA,<br/>UN ESPACIO DE INSPIRACIÓN</h3>
+              <h3>¿QUIÉNES SOMOS?</h3>
               <p>
-                En el corazón de la ciudad, Prediletta nace como un refugio para los 
-                amantes del buen café y los momentos de calidad. Cada rincón ha sido 
-                cuidadosamente diseñado para crear una experiencia sensorial única.
+                En Cafetería Prediletta 1825 somos un rincón acogedor en Quillacollo, 
+                donde cada visita se convierte en una experiencia de sabor y calidez. 
+                Nos encanta recibir a quienes buscan una pausa en su día y hacerlos 
+                sentir como en casa.
               </p>
               <p>
-                Nuestro equipo de baristas certificados trabaja con granos de origen 
-                único, tostados artesanalmente para resaltar sus notas más exquisitas. 
-                Creemos que cada taza cuenta una historia y nos dedicamos a hacer que 
-                la tuya sea memorable.
+                Trabajamos con ingredientes frescos y locales, preparados con cariño 
+                para que cada café y cada masita sea un pequeño motivo para sonreír.
+                Queremos ser parte de los mejores momentos de nuestra comunidad.
+              </p>
+
+              <h3>MISIÓN</h3>
+              <p>
+                Brindar una experiencia cercana y familiar a través de productos 
+                artesanales y un ambiente cálido, promoviendo la conexión entre 
+                personas y contribuyendo a la vida social de Quillacollo.
+              </p>
+
+              <h3>VISIÓN</h3>
+              <p>
+                Convertirnos en la cafetería más querida de Quillacollo: un punto 
+                de encuentro lleno de sabor, accesible para todos y con una 
+                identidad que crezca junto a nuestra comunidad.
               </p>
 
               <div className="about-stats">
                 <div className="stat">
-                  <span className="stat-number">?</span>
-                  <span className="stat-label">AÑOS DE EXPERIENCIA</span>
+                  <span className="stat-number">2+</span>
+                  <span className="stat-label">AÑOS CONTIGO</span>
                 </div>
                 <div className="stat">
-                  <span className="stat-number">?</span>
-                  <span className="stat-label">TIPOS DE CAFÉ</span>
+                  <span className="stat-number">25+</span>
+                  <span className="stat-label">DELICIAS EN EL MENÚ</span>
                 </div>
                 <div className="stat">
-                  <span className="stat-number">100+</span>
+                  <span className="stat-number">300+</span>
                   <span className="stat-label">CLIENTES FELICES</span>
                 </div>
               </div>
@@ -43,13 +58,16 @@ export default function About() {
 
             <div className="about-visual">
               <div className="visual-main">
-                <div className="main-image-placeholder"></div>
+                <div className="main-image-placeholder">
+                  
+                </div>
               </div>
               <div className="visual-secondary">
                 <div className="secondary-image-1"></div>
                 <div className="secondary-image-2"></div>
               </div>
             </div>
+
           </div>
         </div>
       </div>

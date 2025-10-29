@@ -14,7 +14,7 @@ const Header = ({ scrolled, dark }) => {
         <nav className="nav">
           <ul>
             <li><a href="#inicio" className="nav-link">INICIO</a></li>
-            <li><a href="#menu" className="nav-link">MENÚ</a></li>
+            <li><a href="/menu" className="nav-link">MENÚ</a></li>
             <li><a href="#galeria" className="nav-link">GALERÍA</a></li>
             <li><a href="#contacto" className="nav-link">CONTACTO</a></li>
           </ul>

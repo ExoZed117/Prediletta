@@ -1,0 +1,208 @@
+{
+  "categories": [
+    {
+      "id": "cafeteria",
+      "title": "CAFETERÍA",
+      "subcategories": [
+        {
+          "name": "ESPRESSO",
+          "description": "LA ESENCIA DEL CAFÉ: UN EXTRACTO CONCENTRADO, INTENSO Y AROMÁTICO.",
+          "items": [
+            { "name": "ESPRESSO", "price": "8 BS", "desc": "La esencia pura del café" },
+            { "name": "MACCHIATO", "price": "10 BS", "desc": "Espresso pequeño con un toque de espuma de leche" },
+            { "name": "CORTADO", "price": "12 BS", "desc": "Espresso acompañado con un poco de leche caliente" },
+            { "name": "AMERICANO", "price": "12 BS", "desc": "Espresso alargado con agua caliente, ligero" },
+            { "name": "CAPUCHINO", "price": "15 BS", "desc": "Espresso con leche caliente y generosa capa de espuma" },
+            { "name": "LATTE", "price": "16 BS", "desc": "Espresso con abundante leche caliente y fina espuma" },
+            { "name": "MOCACCHINO", "price": "17 BS", "desc": "Espresso con leche y toque de chocolate" },
+            { "name": "AFFOGATO", "price": "20 BS", "desc": "Bola de helado \"ahogada\" en espresso caliente" },
+            { "name": "CAFÉ BOMBÓN", "price": "22 BS", "desc": "Espresso con leche condensada" }
+          ]
+        },
+        {
+          "name": "LECHE CON",
+          "items": [
+            { "name": "CHOCOLATE", "price": "10 BS", "desc": "Leche caliente mezclada con cacao" },
+            { "name": "SUBMARINO", "price": "15 BS", "desc": "Leche caliente con barra de chocolate derretido" },
+            { "name": "NUBE CALIENTE", "price": "20 BS", "desc": "Leche caliente con malvaviscos y crema" }
+          ]
+        },
+        {
+          "name": "MATES",
+          "items": [
+            { "name": "MANZANILLA", "price": "7 BS" },
+            { "name": "ANÍS", "price": "7 BS" },
+            { "name": "FRUTOS ROJOS", "price": "7 BS" },
+            { "name": "CETRÓN", "price": "7 BS" },
+            { "name": "TRIMATE", "price": "7 BS" },
+            { "name": "FLOR DE JAMAICA", "price": "10 BS" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "frappes",
+      "title": "FRAPPES",
+      "items": [
+        { "name": "FRAPPE CLÁSICO", "price": "20 BS", "desc": "Base tradicional, simple pero irresistible" },
+        { "name": "FRAPPE DE MOCCA", "price": "22 BS", "desc": "Café y chocolate en combinación intensa" },
+        { "name": "FRAPPE DE DULCE DE LECHE", "price": "22 BS", "desc": "Mezcla cremosa y suave del clásico argentino" },
+        { "name": "FRAPPE DE OREO", "price": "25 BS", "desc": "Galletas trituradas y cremosidad helada" },
+        { "name": "FRAPPE DE FRUTOS DEL BOSQUE", "price": "27 BS", "desc": "Refrescante, frutal y ligero" },
+        { "name": "FRAPPE DE PISTACHO", "price": "27 BS", "desc": "Toque cremoso con sabor único del pistacho" },
+        { "name": "FRAPPE DE BOMBÓN", "price": "30 BS", "desc": "El famoso bombón convertido en frappe" }
+      ]
+    },
+    {
+      "id": "iced-lattes",
+      "title": "ICED LATTES",
+      "items": [
+        { "name": "ICED LATTE CLÁSICO", "price": "12 BS", "desc": "Café espresso y leche fría servidos sobre hielo" },
+        { "name": "ICED LATTE CARAMEL", "price": "14 BS", "desc": "Café helado con toque de caramelo" },
+        { "name": "ORANGE COFFEE", "price": "14 BS", "desc": "Sabor cítrico de naranja fusionado con café" },
+        { "name": "ICED LATTE MOCCA", "price": "16 BS", "desc": "Café espresso con dulzor intenso del chocolate" },
+        { "name": "ICED LATTE CHOC MENTA", "price": "18 BS", "desc": "Café helado con menta fresca y chocolate" },
+        { "name": "ICED LATTE DE OREO", "price": "18 BS", "desc": "Galletas trituradas, leche y café" }
+      ]
+    },
+    {
+      "id": "pasteleria",
+      "title": "PASTELERÍA",
+      "availability": "PREGUNTAR DISPONIBILIDAD DEL DÍA",
+      "items": [
+        { "name": "TORTA DE CHOCOLATE CON GANACHE", "price": "20 BS", "desc": "Húmeda, intensa y con capa cremosa de ganache" },
+        { "name": "TORTA DE ZANAHORIA CON LIMÓN", "price": "18 BS", "desc": "Esponjosa y aromática con dulzura natural" },
+        { "name": "TORTA RED VELVET", "price": "18 BS", "desc": "Clásica y sofisticada con color rojo inconfundible" },
+        { "name": "TORTA DE FRUTOS ROJOS CON PISTACHO", "price": "20 BS", "desc": "Combinación fresca y elegante" }
+      ]
+    },
+    {
+      "id": "masitas-dulces",
+      "title": "MASITAS DULCES",
+      "items": [
+        { "name": "BROWNIE CLÁSICO", "price": "9 BS", "desc": "Intenso, chocolatoso y esponjoso" },
+        { "name": "BROWNIE SNICKERS", "price": "10 BS", "desc": "Con trozos de maní, caramelo y chocolate" },
+        { "name": "BROWNIE RED VELVET", "price": "10 BS", "desc": "Suave y esponjoso en versión brownie" },
+        { "name": "BROWNIE TRES LECHES", "price": "12 BS", "desc": "Versión única, húmeda y cremosa" },
+        { "name": "BROWNIE CHEESECAKE DE OREO", "price": "12 BS", "desc": "Intensidad con capa cremosa de cheesecake" },
+        { "name": "BROWNIE CON HELADO", "price": "22 BS", "desc": "Brownie artesanal con helado de tu elección" },
+        { "name": "ALFAJOR DE CHOCOLATE", "price": "8 BS", "desc": "Masa artesanal con relleno cremoso de chocolate" },
+        { "name": "ALFAJOR DE FRUTOS ROJOS CON PISTACHO", "price": "9 BS", "desc": "Combinación sofisticada y elegante" },
+        { "name": "ALFAJOR DE ALMENDRA", "price": "10 BS", "desc": "Masa suave con deliciosa crema de almendra" },
+        { "name": "NAPOLEÓN", "price": "15 BS", "desc": "Milhojas de hojaldre con crema pastelera" }
+      ]
+    },
+    {
+      "id": "masitas-saladas",
+      "title": "MASITAS SALADAS",
+      "items": [
+        { "name": "EMPANADA CASERA", "price": "6 BS", "desc": "Masa suave y dorada rellena con queso" },
+        { "name": "CROISSANT DE JAMÓN Y QUESO", "price": "9 BS", "desc": "Croissant relleno de jamón y queso" },
+        { "name": "EMPANADA INTEGRAL", "price": "8 BS", "desc": "Masa integral doradita rellena de queso" },
+        { 
+          "name": "PASTEL DE CHOCLO", 
+          "price": "11 BS", 
+          "desc": "Preparado con maíz molido fresco, anís y queso",
+          "note": "SOLO FINES DE SEMANA"
+        }
+      ]
+    },
+    {
+      "id": "sandwiches",
+      "title": "SÁNDWICHES",
+      "items": [
+        { "name": "SÁNDWICH DE POLLO", "price": "22 BS", "desc": "Pollo desmenuzado con especias suaves y albaca" },
+        { "name": "SÁNDWICH DE LOMITO", "price": "25 BS", "desc": "Carne de lomito con tomate fresco y huevo" },
+        { "name": "SÁNDWICH PHILADELPHIA", "price": "29 BS", "desc": "Carne desmechada con queso fundido y vegetales" }
+      ]
+    },
+    {
+      "id": "helados",
+      "title": "HELADOS",
+      "availability": "PREGUNTAR DISPONIBILIDAD DEL DÍA",
+      "sections": [
+        {
+          "name": "SABORES INDIVIDUALES",
+          "type": "grid",
+          "items": [
+            { "name": "CHOCOLATE", "price": "8 BS" },
+            { "name": "DULCE DE LECHE", "price": "8 BS" },
+            { "name": "VAINILLA", "price": "8 BS" },
+            { "name": "FRUTOS ROJOS", "price": "8 BS" },
+            { "name": "LIMÓN", "price": "8 BS" },
+            { "name": "OREO", "price": "8 BS" },
+            { "name": "MARACUYÁ", "price": "8 BS" },
+            { "name": "CHIRIMOYA", "price": "8 BS" },
+            { "name": "COPOAZÚ", "price": "8 BS" }
+          ],
+          "combinations": [
+            { "name": "1 SABOR", "price": "8 BS" },
+            { "name": "2 SABORES", "price": "14 BS" },
+            { "name": "3 SABORES", "price": "20 BS" }
+          ]
+        },
+        {
+          "name": "HELADOS ESPECIALES",
+          "items": [
+            { 
+              "name": "GUSANITO TROPICAL", 
+              "price": "23 BS", 
+              "desc": "Chocolate + Oreo + Dulce de Leche - Contraste divertido entre lo dulce, ácido y cremoso" 
+            },
+            { 
+              "name": "PRIMAVERA", 
+              "price": "25 BS", 
+              "desc": "Frutos Rojos + Chirimoya + Vainilla - Suave, frutal y perfumado" 
+            },
+            { 
+              "name": "VERANO", 
+              "price": "25 BS", 
+              "desc": "Maracuyá + Vainilla + Frutos Rojos - Refrescante y ligero" 
+            },
+            { 
+              "name": "BANANA SPLIT", 
+              "price": "30 BS", 
+              "desc": "Chocolate + Vainilla + Dulce de Leche - Clásico con banana, crema y salsa" 
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "refrescos",
+      "title": "REFRESCOS",
+      "tables": [
+        {
+          "name": "AGUA",
+          "headers": ["SABOR", "VASO", "JARRA"],
+          "rows": [
+            { "sabor": "MARACUYÁ", "vaso": "8 BS", "jarra": "24 BS" },
+            { "sabor": "TUMBO", "vaso": "6 BS", "jarra": "22 BS" },
+            { "sabor": "COPOAZÚ", "vaso": "6 BS", "jarra": "22 BS" },
+            { "sabor": "PIÑA", "vaso": "6 BS", "jarra": "22 BS" },
+            { "sabor": "FRUTILLA", "vaso": "6 BS", "jarra": "22 BS" },
+            { "sabor": "DURAZNO", "vaso": "8 BS", "jarra": "24 BS" },
+            { "sabor": "SANDÍA", "vaso": "8 BS", "jarra": "24 BS" },
+            { "sabor": "PLÁTANO", "vaso": "6 BS", "jarra": "22 BS" },
+            { "sabor": "LIMONADA", "vaso": "6 BS", "jarra": "22 BS" }
+          ]
+        },
+        {
+          "name": "LECHE",
+          "headers": ["SABOR", "VASO", "JARRA"],
+          "rows": [
+            { "sabor": "MARACUYÁ", "vaso": "14 BS", "jarra": "30 BS" },
+            { "sabor": "TUMBO", "vaso": "12 BS", "jarra": "28 BS" },
+            { "sabor": "COPOAZÚ", "vaso": "12 BS", "jarra": "28 BS" },
+            { "sabor": "PIÑA", "vaso": "12 BS", "jarra": "28 BS" },
+            { "sabor": "FRUTILLA", "vaso": "12 BS", "jarra": "28 BS" },
+            { "sabor": "DURAZNO", "vaso": "14 BS", "jarra": "30 BS" },
+            { "sabor": "SANDÍA", "vaso": "14 BS", "jarra": "30 BS" },
+            { "sabor": "PLÁTANO", "vaso": "12 BS", "jarra": "28 BS" },
+            { "sabor": "LIMONADA", "vaso": "12 BS", "jarra": "28 BS" }
+          ]
+        }
+      ]
+    }
+  ]
+}
