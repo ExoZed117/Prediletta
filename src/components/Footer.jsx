@@ -17,8 +17,8 @@ const Footer = () => {
           <div className="footer-links">
             <div className="link-group">
               <h4>HORARIOS</h4>
-              <p>Lunes - Viernes: 7:00 - 21:00</p>
-              <p>Sábado - Domingo: 8:00 - 22:00</p>
+              <p>De lunes a sábado de 8:30 a 9:30</p>
+              <p>Domingo de 14:30 a 9:30</p>
             </div>
             
             <div className="link-group">
@@ -32,9 +32,9 @@ const Footer = () => {
             <div className="link-group">
               <h4>SÍGUENOS</h4>
               <div className="social-links">
-                <a href="#">Instagram</a>
-                <a href="#">Facebook</a>
-                <a href="#">Twitter</a>
+                <a href="https://www.instagram.com/prediletta1825?igsh=ZWRoN2MxaGRyN2Fo">Instagram</a>
+                <a href="https://www.facebook.com/share/1JehRXhtH9/?mibextid=wwXIfr">Facebook</a>
+                <a href="#">WhatsApp</a>
               </div>
             </div>
           </div>
