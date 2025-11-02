@@ -1,0 +1,75 @@
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.5);
+  backdrop-filter: blur(2px);
+  display: grid; place-items: center;
+  z-index: 2000;
+}
+
+.cart-modal {
+  width: min(900px, 92vw);
+  background: var(--color-white, #fff);
+  color: var(--color-text, #222);
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  overflow: hidden;
+}
+
+.cart-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border, #ececec);
+}
+
+.icon-btn {
+  background: transparent; border: none; font-size: 1.1rem; cursor: pointer;
+  color: var(--color-text, #222);
+}
+
+.empty { padding: 2.5rem; text-align: center; color: var(--color-text-light, #666); }
+
+.cart-list { padding: .5rem 1rem; max-height: 55vh; overflow: auto; }
+
+.cart-row {
+  display: grid; grid-template-columns: 1fr auto auto auto;
+  gap: 1rem; align-items: center;
+  padding: .75rem 0; border-bottom: 1px solid var(--color-border, #ececec);
+}
+
+.cart-info { display: flex; flex-direction: column; gap:.2rem; }
+.muted { color: var(--color-text-light, #666); font-size: .9rem; }
+
+.qty-controls { display:flex; align-items:center; gap:.5rem; }
+.qty-btn {
+  width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--color-border,#ddd);
+  background: var(--color-white,#fff); cursor:pointer;
+}
+.qty { min-width: 24px; text-align:center; }
+
+.line-total { font-weight: 600; }
+
+.row-remove {
+  background: transparent; border: none; color: #c0392b; cursor: pointer; font-size: .9rem;
+}
+
+.cart-footer {
+  padding: 1rem 1.25rem;
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 1rem;
+  border-top: 1px solid var(--color-border, #ececec);
+}
+
+.total { display:flex; align-items:center; gap:.75rem; font-size:1.05rem; }
+.total strong { font-size: 1.15rem; color: var(--color-accent, #ff6600); }
+
+.actions { display:flex; align-items:center; gap:.75rem; }
+.ghost {
+  border: 1px solid var(--color-border,#ddd); background: transparent; padding:.7rem 1rem; border-radius:10px; cursor:pointer;
+}
+.primary {
+  background: var(--color-accent,#ff6600); color:#fff; border:none; padding:.75rem 1.25rem; border-radius:10px; cursor:pointer; font-weight:600;
+}
+
+@media (max-width: 640px) {
+  .cart-row { grid-template-columns: 1fr auto auto; }
+  .row-remove { grid-column: 1 / -1; justify-self: end; }
+}

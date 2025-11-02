@@ -137,3 +137,9 @@
   backdrop-filter: blur(8px);
 }
 
+.cart-btn { position: relative; }
+.cart-badge{
+  position:absolute; top:-6px; right:-6px;
+  background:#ff6600; color:#fff; font-size:.7rem; line-height:1;
+  padding:.2rem .35rem; border-radius:999px; font-weight:700;
+}

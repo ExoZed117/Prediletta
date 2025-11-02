@@ -1,8 +1,11 @@
 import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { useCart } from '../context/CartContext' // ✅ importar el hook
 
 const Header = ({ scrolled, dark }) => {
+  const { count, setIsCartOpen } = useCart(); // ✅ usar valores del contexto
+
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''} ${dark ? 'dark' : ''}`}>
       <div className="header-container">
@@ -21,8 +24,9 @@ const Header = ({ scrolled, dark }) => {
         </nav>
 
         <div className="header-actions">
-          <button className="cart-btn">
+          <button className="cart-btn" onClick={() => setIsCartOpen(true)}>
             <FontAwesomeIcon icon={faCartShopping} className="cart-icon" />
+            {count > 0 && <span className="cart-badge">{count}</span>}
           </button>
         </div>
 

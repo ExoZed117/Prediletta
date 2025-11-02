@@ -1,12 +1,15 @@
 import '../styles/Menu.css'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import CartModal from '../components/CartModal';
 import menuData from '../data/menu.json';
 import { useEffect, useState } from 'react';
+import { useCart } from "../context/CartContext";
 
 const Menu = () => {
   const [scrolled, setScrolled] = useState(false);
   const { categories } = menuData;
+  const { addToCart, isCartOpen, count } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +23,59 @@ const Menu = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Función especial para renderizar helados
+  const renderIceCreams = (category) => {
+    return (
+      <div className="menu-category">
+        <h3>Elige tu helado</h3>
+        <p className="category-description">Precios por número de bolas:</p>
+        
+        {/* Mostrar precios por bolas */}
+        <div className="icecream-prices">
+          {category.bolas.map((bola, index) => (
+            <div key={index} className="icecream-option">
+              <span className="bola-type">{bola.tipo}</span>
+              <span className="bola-price">{bola.precio} BS</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Grid de sabores */}
+        <div className="icecream-grid">
+          {category.sabores.map((sabor, index) => (
+            <div key={index} className="icecream-item">
+              <div className="icecream-content">
+                <h4>{sabor.name}</h4>
+                <p className="icecream-price-base">{sabor.price} BS por bola</p>
+              </div>
+              <div className="icecream-actions">
+                {/* Botones para cada tipo de bola */}
+                {category.bolas.map((bola, bolaIndex) => {
+                  const numericPrice = parseFloat(bola.precio);
+                  return (
+                    <button
+                      key={bolaIndex}
+                      className="add-btn icecream-btn"
+                      onClick={() =>
+                        addToCart({
+                          name: `Helado ${sabor.name} (${bola.tipo.toLowerCase()})`,
+                          price: numericPrice,
+                          desc: `Delicioso helado de ${sabor.name.toLowerCase()}`
+                        })
+                      }
+                    >
+                      {bola.tipo.split(' ')[0]} 🍦
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   const renderSubcategories = (subcategories) => {
     return subcategories.map((subcategory, index) => (
       <div key={index} className="menu-category">
@@ -28,25 +84,58 @@ const Menu = () => {
           <p className="category-description">{subcategory.description}</p>
         )}
         <div className={`menu-items ${subcategory.type === 'grid' ? 'grid-items' : ''}`}>
-          {subcategory.items.map((item, itemIndex) => (
-            <div key={itemIndex} className={`menu-item ${!item.desc ? 'simple' : ''}`}>
-              <div className="item-content">
-                <h4>{item.name}</h4>
-                {item.desc && <p>{item.desc}</p>}
-                {item.note && <p className="availability-note">({item.note})</p>}
+          {subcategory.items.map((item, itemIndex) => {
+            const numericPrice = parseFloat(item.price);
+            return (
+              <div key={itemIndex} className={`menu-item ${!item.desc ? 'simple' : ''}`}>
+                <div className="item-content">
+                  <h4>{item.name}</h4>
+                  {item.desc && <p>{item.desc}</p>}
+                  {item.note && <p className="availability-note">({item.note})</p>}
+                </div>
+                <div className="item-actions">
+                  <span className="item-price">{item.price}</span>
+                  <button
+                    className="add-btn"
+                    onClick={() =>
+                      addToCart({
+                        name: item.name,
+                        price: numericPrice,
+                        desc: item.desc
+                      })
+                    }
+                  >
+                    Añadir 🛒
+                  </button>
+                </div>
               </div>
-              <span className="item-price">{item.price}</span>
-            </div>
-          ))}
+            );
+          })}
         </div>
         {subcategory.combinations && (
           <div className="combination-prices">
-            {subcategory.combinations.map((combo, comboIndex) => (
-              <div key={comboIndex} className="combination">
-                <span>{combo.name}</span>
-                <span className="item-price">{combo.price}</span>
-              </div>
-            ))}
+            {subcategory.combinations.map((combo, comboIndex) => {
+              const numericPrice = parseFloat(combo.price);
+              return (
+                <div key={comboIndex} className="combination">
+                  <span>{combo.name}</span>
+                  <div className="combination-actions">
+                    <span className="item-price">{combo.price}</span>
+                    <button
+                      className="add-btn"
+                      onClick={() =>
+                        addToCart({
+                          name: combo.name,
+                          price: numericPrice,
+                        })
+                      }
+                    >
+                      Añadir 🛒
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         )}
       </div>
@@ -56,16 +145,33 @@ const Menu = () => {
   const renderItems = (items) => {
     return (
       <div className="menu-items">
-        {items.map((item, index) => (
-          <div key={index} className="menu-item">
-            <div className="item-content">
-              <h4>{item.name}</h4>
-              {item.desc && <p>{item.desc}</p>}
-              {item.note && <p className="availability-note">({item.note})</p>}
+        {items.map((item, index) => {
+          const numericPrice = parseFloat(item.price);
+          return (
+            <div key={index} className="menu-item">
+              <div className="item-content">
+                <h4>{item.name}</h4>
+                {item.desc && <p>{item.desc}</p>}
+                {item.note && <p className="availability-note">({item.note})</p>}
+              </div>
+              <div className="item-actions">
+                <span className="item-price">{item.price}</span>
+                <button
+                  className="add-btn"
+                  onClick={() =>
+                    addToCart({
+                      name: item.name,
+                      price: numericPrice,
+                      desc: item.desc
+                    })
+                  }
+                >
+                  Añadir 🛒
+                </button>
+              </div>
             </div>
-            <span className="item-price">{item.price}</span>
-          </div>
-        ))}
+          );
+        })}
       </div>
     );
   };
@@ -79,14 +185,43 @@ const Menu = () => {
             {table.headers.map((header, headerIndex) => (
               <span key={headerIndex}>{header}</span>
             ))}
+            <span>Acción</span>
           </div>
-          {table.rows.map((row, rowIndex) => (
-            <div key={rowIndex} className="table-row">
-              <span>{row.sabor}</span>
-              <span>{row.vaso}</span>
-              <span>{row.jarra}</span>
-            </div>
-          ))}
+          {table.rows.map((row, rowIndex) => {
+            const numericPriceVaso = parseFloat(row.vaso);
+            const numericPriceJarra = parseFloat(row.jarra);
+            return (
+              <div key={rowIndex} className="table-row">
+                <span>{row.sabor}</span>
+                <span>{row.vaso}</span>
+                <span>{row.jarra}</span>
+                <div className="table-actions">
+                  <button
+                    className="add-btn small"
+                    onClick={() =>
+                      addToCart({
+                        name: `${row.sabor} (Vaso)`,
+                        price: numericPriceVaso,
+                      })
+                    }
+                  >
+                    Vaso 🛒
+                  </button>
+                  <button
+                    className="add-btn small"
+                    onClick={() =>
+                      addToCart({
+                        name: `${row.sabor} (Jarra)`,
+                        price: numericPriceJarra,
+                      })
+                    }
+                  >
+                    Jarra 🛒
+                  </button>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     ));
@@ -99,23 +234,55 @@ const Menu = () => {
         {section.type === 'grid' ? (
           <>
             <div className="menu-items grid-items">
-              {section.items.map((item, itemIndex) => (
-                <div key={itemIndex} className="menu-item simple">
-                  <div className="item-content">
-                    <h4>{item.name}</h4>
+              {section.items.map((item, itemIndex) => {
+                const numericPrice = parseFloat(item.price);
+                return (
+                  <div key={itemIndex} className="menu-item simple">
+                    <div className="item-content">
+                      <h4>{item.name}</h4>
+                    </div>
+                    <div className="item-actions">
+                      <span className="item-price">{item.price}</span>
+                      <button
+                        className="add-btn"
+                        onClick={() =>
+                          addToCart({
+                            name: item.name,
+                            price: numericPrice,
+                          })
+                        }
+                      >
+                        Añadir 🛒
+                      </button>
+                    </div>
                   </div>
-                  <span className="item-price">{item.price}</span>
-                </div>
-              ))}
+                );
+              })}
             </div>
             {section.combinations && (
               <div className="combination-prices">
-                {section.combinations.map((combo, comboIndex) => (
-                  <div key={comboIndex} className="combination">
-                    <span>{combo.name}</span>
-                    <span className="item-price">{combo.price}</span>
-                  </div>
-                ))}
+                {section.combinations.map((combo, comboIndex) => {
+                  const numericPrice = parseFloat(combo.price);
+                  return (
+                    <div key={comboIndex} className="combination">
+                      <span>{combo.name}</span>
+                      <div className="combination-actions">
+                        <span className="item-price">{combo.price}</span>
+                        <button
+                          className="add-btn"
+                          onClick={() =>
+                            addToCart({
+                              name: combo.name,
+                              price: numericPrice,
+                            })
+                          }
+                        >
+                          Añadir 🛒
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             )}
           </>
@@ -166,6 +333,7 @@ const Menu = () => {
               </div>
 
               {/* Renderizar según la estructura de la categoría */}
+              {category.type === 'icecream' && renderIceCreams(category)}
               {category.subcategories && renderSubcategories(category.subcategories)}
               {category.items && !category.tables && !category.sections && renderItems(category.items)}
               {category.sections && renderSections(category.sections)}
@@ -189,6 +357,9 @@ const Menu = () => {
       </div>
 
       <Footer />
+
+      {/* Modal del Carrito */}
+      {isCartOpen && <CartModal />}
     </div>
   );
 };

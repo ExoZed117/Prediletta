@@ -7,18 +7,19 @@ import About from './components/About'
 import Gallery from './components/Gallery'
 import Info from './components/Info'
 
+// ✅ Importamos el contexto y el modal
+import { useCart } from './context/CartContext'
+import CartModal from './components/CartModal'
+
 function App() {
   const [scrolled, setScrolled] = useState(false)
+  const { isCartOpen, setIsCartOpen } = useCart(); // ✅ del contexto
 
   useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 50
-      setScrolled(isScrolled)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <>
@@ -28,8 +29,16 @@ function App() {
       <Gallery />
       <Info />
       <Footer />
+
+      {/* ✅ Modal del carrito */}
+      {isCartOpen && (
+        <CartModal onProceed={() => {
+          setIsCartOpen(false);
+          // Luego aquí llamaremos al OrderModal (Fase 2)
+        }} />
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;

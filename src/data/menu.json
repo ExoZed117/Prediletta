@@ -97,7 +97,7 @@
       "title": "MASITAS SALADAS",
       "items": [
         { "name": "EMPANADA CASERA", "price": "6 BS", "desc": "Masa suave y dorada rellena con queso" },
-        { "name": "CROISSANT DE JAMÓN Y QUESO", "price": "9 BS", "desc": "Croissant relleno de jamón y queso" },
+        { "name": "CROISSANT DE JAMÓN Y QUESO", "price": "9 BS", "desc": "Croissant rellena de jamón y queso" },
         { "name": "EMPANADA INTEGRAL", "price": "8 BS", "desc": "Masa integral doradita rellena de queso" },
         { 
           "name": "PASTEL DE CHOCLO", 
@@ -120,51 +120,48 @@
       "id": "helados",
       "title": "HELADOS",
       "availability": "PREGUNTAR DISPONIBILIDAD DEL DÍA",
-      "sections": [
-        {
-          "name": "SABORES INDIVIDUALES",
-          "type": "grid",
-          "items": [
-            { "name": "CHOCOLATE", "price": "8 BS" },
-            { "name": "DULCE DE LECHE", "price": "8 BS" },
-            { "name": "VAINILLA", "price": "8 BS" },
-            { "name": "FRUTOS ROJOS", "price": "8 BS" },
-            { "name": "LIMÓN", "price": "8 BS" },
-            { "name": "OREO", "price": "8 BS" },
-            { "name": "MARACUYÁ", "price": "8 BS" },
-            { "name": "CHIRIMOYA", "price": "8 BS" },
-            { "name": "COPOAZÚ", "price": "8 BS" }
-          ],
-          "combinations": [
-            { "name": "1 SABOR", "price": "8 BS" },
-            { "name": "2 SABORES", "price": "14 BS" },
-            { "name": "3 SABORES", "price": "20 BS" }
-          ]
+      "type": "icecream",
+      "sabores": [
+        { "name": "CHOCOLATE", "price": "8" },
+        { "name": "DULCE DE LECHE", "price": "8" },
+        { "name": "VAINILLA", "price": "8" },
+        { "name": "FRUTOS ROJOS", "price": "8" },
+        { "name": "LIMÓN", "price": "8" },
+        { "name": "OREO", "price": "8" },
+        { "name": "MARACUYÁ", "price": "8" },
+        { "name": "CHIRIMOYA", "price": "8" },
+        { "name": "COPOAZÚ", "price": "8" }
+      ],
+      "bolas": [
+        { "tipo": "1 SABOR", "precio": "8" },
+        { "tipo": "2 SABORES", "precio": "14" },
+        { "tipo": "3 SABORES", "precio": "20" }
+      ]
+    },
+    {
+      "id": "helados-especiales",
+      "title": "HELADOS ESPECIALES",
+      "availability": "PREGUNTAR DISPONIBILIDAD DEL DÍA",
+      "items": [
+        { 
+          "name": "GUSANITO TROPICAL", 
+          "price": "23 BS", 
+          "desc": "Chocolate + Oreo + Dulce de Leche - Contraste divertido entre lo dulce, ácido y cremoso" 
         },
-        {
-          "name": "HELADOS ESPECIALES",
-          "items": [
-            { 
-              "name": "GUSANITO TROPICAL", 
-              "price": "23 BS", 
-              "desc": "Chocolate + Oreo + Dulce de Leche - Contraste divertido entre lo dulce, ácido y cremoso" 
-            },
-            { 
-              "name": "PRIMAVERA", 
-              "price": "25 BS", 
-              "desc": "Frutos Rojos + Chirimoya + Vainilla - Suave, frutal y perfumado" 
-            },
-            { 
-              "name": "VERANO", 
-              "price": "25 BS", 
-              "desc": "Maracuyá + Vainilla + Frutos Rojos - Refrescante y ligero" 
-            },
-            { 
-              "name": "BANANA SPLIT", 
-              "price": "30 BS", 
-              "desc": "Chocolate + Vainilla + Dulce de Leche - Clásico con banana, crema y salsa" 
-            }
-          ]
+        { 
+          "name": "PRIMAVERA", 
+          "price": "25 BS", 
+          "desc": "Frutos Rojos + Chirimoya + Vainilla - Suave, frutal y perfumado" 
+        },
+        { 
+          "name": "VERANO", 
+          "price": "25 BS", 
+          "desc": "Maracuyá + Vainilla + Frutos Rojos - Refrescante y ligero" 
+        },
+        { 
+          "name": "BANANA SPLIT", 
+          "price": "30 BS", 
+          "desc": "Chocolate + Vainilla + Dulce de Leche - Clásico con banana, crema y salsa" 
         }
       ]
     },
