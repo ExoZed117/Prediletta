@@ -14,6 +14,11 @@
   backdrop-filter: blur(10px);
 }
 
+.header.dark {
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(8px);
+}
+
 .header-container {
   max-width: 1400px;
   margin: 0 auto;
@@ -31,6 +36,7 @@
   text-transform: uppercase;
 }
 
+/* Navegación Desktop */
 .nav ul {
   list-style: none;
   display: flex;
@@ -47,6 +53,7 @@
   text-transform: uppercase;
   transition: all 0.3s ease;
   position: relative;
+  text-decoration: none;
 }
 
 .nav-link:hover {
@@ -68,6 +75,52 @@
   width: 100%;
 }
 
+/* Botones del Header */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.cart-btn {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  position: relative;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.cart-icon {
+  color: var(--color-accent);
+  transition: color 0.3s ease;
+}
+
+.cart-btn:hover {
+  background: rgba(255, 107, 53, 0.1);
+}
+
+.cart-btn:hover .cart-icon {
+  color: var(--color-light);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-size: 0.7rem;
+  line-height: 1;
+  padding: 0.2rem 0.35rem;
+  border-radius: 999px;
+  font-weight: 700;
+  min-width: 18px;
+  text-align: center;
+}
+
 .reservation-btn {
   background: transparent;
   color: var(--color-light);
@@ -78,6 +131,7 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: all 0.3s ease;
+  border-radius: 4px;
 }
 
 .reservation-btn:hover {
@@ -86,14 +140,192 @@
   border-color: var(--color-light);
 }
 
-/* Mobile Menu (oculto por defecto) */
+/* Menú Móvil */
 .mobile-menu-btn {
   display: none;
   background: none;
   border: none;
   color: var(--color-light);
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Overlay del Menú Móvil */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Menú Móvil */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100%;
+  background: var(--color-dark);
+  z-index: 1000;
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mobile-menu-logo {
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: var(--color-light);
+  text-transform: uppercase;
+}
+
+.mobile-close-btn {
+  background: none;
+  border: none;
+  color: var(--color-light);
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.mobile-close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-accent);
+}
+
+.mobile-nav {
+  flex: 1;
+}
+
+.mobile-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-nav-link {
+  color: var(--color-light);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.mobile-nav-link:hover {
+  color: var(--color-accent);
+  padding-left: 1rem;
+}
+
+.mobile-nav-link.active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.mobile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.mobile-cart-btn {
+  background: transparent;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.mobile-cart-btn:hover {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.mobile-reservation-btn {
+  background: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobile-reservation-btn:hover {
+  background: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .header-container {
+    padding: 0 2rem;
+  }
+  
+  .nav ul {
+    gap: 2rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -101,45 +333,91 @@
     padding: 0 1.5rem;
   }
   
+  /* Ocultar navegación desktop */
   .nav {
     display: none;
   }
   
-  .header-actions {
+  .header-actions .reservation-btn {
     display: none;
   }
   
+  /* Mostrar botón móvil */
   .mobile-menu-btn {
     display: block;
   }
   
   .logo span {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     letter-spacing: 2px;
   }
-}.cart-btn {
-  background: transparent;
-  border: none;
-  font-size: 22px;
-  cursor: pointer;
-}
-.cart-icon {
-  color: #ff6600;
-  transition: color .2s ease;
+  
+  .cart-btn {
+    font-size: 1.5rem;
+  }
 }
 
-.cart-icon:hover {
-  color: #000;
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0 1rem;
+  }
+  
+  .header.scrolled {
+    padding: 0.8rem 0;
+  }
+  
+  .logo span {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+  
+  .mobile-menu {
+    width: 100%;
+  }
+  
+  .cart-badge {
+    font-size: 0.6rem;
+    padding: 0.15rem 0.3rem;
+    min-width: 16px;
+  }
 }
 
-.header.dark {
-  background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(8px);
+/* Animaciones */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.cart-btn { position: relative; }
-.cart-badge{
-  position:absolute; top:-6px; right:-6px;
-  background:#ff6600; color:#fff; font-size:.7rem; line-height:1;
-  padding:.2rem .35rem; border-radius:999px; font-weight:700;
+.mobile-nav li {
+  animation: slideInRight 0.3s ease forwards;
+}
+
+.mobile-nav li:nth-child(1) { animation-delay: 0.1s; }
+.mobile-nav li:nth-child(2) { animation-delay: 0.15s; }
+.mobile-nav li:nth-child(3) { animation-delay: 0.2s; }
+.mobile-nav li:nth-child(4) { animation-delay: 0.25s; }
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .mobile-menu,
+  .mobile-nav li {
+    transition: none;
+    animation: none;
+  }
+}
+
+.nav-link:focus,
+.cart-btn:focus,
+.mobile-menu-btn:focus,
+.mobile-close-btn:focus,
+.mobile-nav-link:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }

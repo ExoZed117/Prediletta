@@ -75,12 +75,21 @@
 .menu-nav-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 1rem 0.5rem;
   display: flex;
-  justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
   overflow-x: auto;
   scrollbar-width: none;
+  white-space: nowrap;
+  justify-content: flex-start; /* ✅ evita que bloquee el scroll */
+}
+
+@media (max-width: 768px) {
+  .menu-nav-container {
+    gap: 1rem;
+    padding-left: 1rem; /* ✅ permite scroll hacia la izquierda */
+    padding-right: 1rem;
+  }
 }
 
 .menu-nav-container::-webkit-scrollbar {
