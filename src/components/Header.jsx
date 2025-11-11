@@ -36,19 +36,20 @@ const Header = ({ scrolled, dark }) => {
       <header className={`header ${scrolled ? 'scrolled' : ''} ${dark ? 'dark' : ''}`}>
         <div className="header-container">
 
+          {/* Logo - Modificado */}
           <div className="logo">
-            <span>PREDILETTA</span>
+            <img src="/src/assets/img/Predilleta.png" alt="Prediletta logo" className="logo-img" />
+            <span className="logo-text">PREDILETTA</span>
           </div>
-          
+
           {/* Navegación Desktop */}
           <nav className="nav">
             <ul>
-  <li><a href="/" className="nav-link">INICIO</a></li>
-  <li><a href="/menu" className="nav-link">MENÚ</a></li>
-  <li><a href="/galeria" className="nav-link">GALERÍA</a></li>
-  <li><a href="/contacto" className="nav-link">CONTACTO</a></li>
-</ul>
-
+              <li><a href="/" className="nav-link">INICIO</a></li>
+              <li><a href="/menu" className="nav-link">MENÚ</a></li>
+              <li><a href="/galeria" className="nav-link">GALERÍA</a></li>
+              <li><a href="/contacto" className="nav-link">CONTACTO</a></li>
+            </ul>
           </nav>
 
           {/* Acciones Desktop */}
