@@ -81,13 +81,13 @@
   overflow-x: auto;
   scrollbar-width: none;
   white-space: nowrap;
-  justify-content: flex-start; /* ✅ evita que bloquee el scroll */
+  justify-content: flex-start;
 }
 
 @media (max-width: 768px) {
   .menu-nav-container {
     gap: 1rem;
-    padding-left: 1rem; /* ✅ permite scroll hacia la izquierda */
+    padding-left: 1rem;
     padding-right: 1rem;
   }
 }

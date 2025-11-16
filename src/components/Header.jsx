@@ -38,7 +38,7 @@ const Header = ({ scrolled, dark }) => {
 
           {/* Logo - Modificado */}
           <div className="logo">
-            <img src="/src/assets/img/Predilleta.png" alt="Prediletta logo" className="logo-img" />
+            <img src="/src/assets/img/Prediletta.png" alt="Prediletta logo" className="logo-img" />
             <span className="logo-text">PREDILETTA</span>
           </div>
 

@@ -295,8 +295,7 @@ const Menu = () => {
 
   return (
     <div className="App">
-      <Header scrolled={true} dark={true} />
-      
+      <Header scrolled={scrolled} dark={true} />     
       <div className="menu-page">
         {/* Hero Section */}
         <section className="menu-hero">
