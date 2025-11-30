@@ -747,3 +747,87 @@ html {
   background: #f0f0f0;
   outline: none;
 }
+/* =========================================
+   OPCIÓN C MEJORADA: BISTRO CON POP-UP
+   ========================================= */
+
+.menu-item.has-image {
+  flex-direction: row; 
+  align-items: center;
+  padding: 1.2rem;
+  gap: 1.5rem;
+  position: relative; /* Necesario para el orden de capas */
+}
+
+/* El contenedor de la foto */
+.item-image-container {
+  width: 90px;
+  height: 90px;
+  min-width: 90px; 
+  
+  /* ESTADO NORMAL (Círculo Pequeño) */
+  border-radius: 50%; 
+  border: 2px solid var(--color-accent);
+  padding: 2px;
+  background: white;
+  
+  /* Animación suave para el efecto "Pop" */
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto rebote suave */
+  cursor: pointer; /* Manito para indicar que se puede tocar */
+  
+  /* Aseguramos que la foto crezca desde la izquierda hacia la derecha */
+  transform-origin: left center;
+  z-index: 1;
+}
+
+/* La imagen dentro */
+.item-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: border-radius 0.3s ease;
+}
+
+.item-content {
+  flex: 1;
+  z-index: 0; /* El texto se queda atrás */
+}
+
+/* =========================================
+   EL EFECTO MÁGICO (HOVER)
+   ========================================= */
+.item-image-container:hover {
+  /* 1. SE HACE GRANDE (3 veces su tamaño) */
+  transform: scale(2.8); 
+  
+  /* 2. PIERDE EL CÍRCULO (Se hace cuadrada para ver mejor) */
+  border-radius: 8px;
+  border-color: white; /* El borde se vuelve blanco para parecer una foto polaroid */
+  
+  /* 3. FLOTA SOBRE TODO */
+  z-index: 999; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Sombra fuerte para dar profundidad */
+  
+  /* Pequeño ajuste para que no tape el precio inmediatamente */
+  margin-right: 20px; 
+}
+
+/* También ajustamos la imagen interna al hacer hover */
+.item-image-container:hover img {
+  border-radius: 6px; /* Ajustamos el radio de la imagen interna */
+}
+
+/* Ajuste para Móviles */
+@media (max-width: 480px) {
+  .item-image-container {
+    width: 70px;
+    height: 70px;
+    min-width: 70px;
+  }
+  
+  /* En celular no la hacemos TAN gigante para que no se salga de la pantalla */
+  .item-image-container:hover {
+    transform: scale(2.5); 
+  }
+}

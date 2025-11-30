@@ -9,7 +9,7 @@ import { useCart } from "../context/CartContext";
 const Menu = () => {
   const [scrolled, setScrolled] = useState(false);
   const { categories } = menuData;
-  const { addToCart, isCartOpen, count } = useCart();
+  const { addToCart, isCartOpen } = useCart(); // 'count' no se usaba, lo quité para limpiar
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,7 +23,7 @@ const Menu = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Función especial para renderizar helados
+  // Función especial para renderizar helados (Esta se queda igual porque no pediste fotos aquí)
   const renderIceCreams = (category) => {
     return (
       <div className="menu-category">
@@ -76,6 +76,7 @@ const Menu = () => {
     );
   };
 
+  // 🔴 AQUÍ HICE CAMBIOS: renderSubcategories ahora soporta imágenes
   const renderSubcategories = (subcategories) => {
     return subcategories.map((subcategory, index) => (
       <div key={index} className="menu-category">
@@ -87,7 +88,16 @@ const Menu = () => {
           {subcategory.items.map((item, itemIndex) => {
             const numericPrice = parseFloat(item.price);
             return (
-              <div key={itemIndex} className={`menu-item ${!item.desc ? 'simple' : ''}`}>
+              // Agregamos la clase 'has-image' si el item tiene imagen
+              <div key={itemIndex} className={`menu-item ${!item.desc ? 'simple' : ''} ${item.image ? 'has-image' : ''}`}>
+                
+                {/* LOGICA DE IMAGEN AÑADIDA */}
+                {item.image && (
+                  <div className="item-image-container">
+                    <img src={item.image} alt={item.name} loading="lazy" />
+                  </div>
+                )}
+
                 <div className="item-content">
                   <h4>{item.name}</h4>
                   {item.desc && <p>{item.desc}</p>}
@@ -142,13 +152,23 @@ const Menu = () => {
     ));
   };
 
+  // 🔴 AQUÍ HICE CAMBIOS: renderItems ahora soporta imágenes
   const renderItems = (items) => {
     return (
       <div className="menu-items">
         {items.map((item, index) => {
           const numericPrice = parseFloat(item.price);
           return (
-            <div key={index} className="menu-item">
+            // Agregamos la clase 'has-image'
+            <div key={index} className={`menu-item ${item.image ? 'has-image' : ''}`}>
+              
+              {/* LOGICA DE IMAGEN AÑADIDA */}
+              {item.image && (
+                <div className="item-image-container">
+                  <img src={item.image} alt={item.name} loading="lazy" />
+                </div>
+              )}
+
               <div className="item-content">
                 <h4>{item.name}</h4>
                 {item.desc && <p>{item.desc}</p>}
@@ -227,6 +247,7 @@ const Menu = () => {
     ));
   };
 
+  // 🔴 AQUÍ HICE CAMBIOS: renderSections ahora soporta imágenes (por si acaso usas grid en el futuro)
   const renderSections = (sections) => {
     return sections.map((section, index) => (
       <div key={index} className="menu-category">
@@ -237,7 +258,16 @@ const Menu = () => {
               {section.items.map((item, itemIndex) => {
                 const numericPrice = parseFloat(item.price);
                 return (
-                  <div key={itemIndex} className="menu-item simple">
+                  // Agregamos la clase 'has-image'
+                  <div key={itemIndex} className={`menu-item simple ${item.image ? 'has-image' : ''}`}>
+                    
+                    {/* LOGICA DE IMAGEN AÑADIDA */}
+                    {item.image && (
+                      <div className="item-image-container">
+                        <img src={item.image} alt={item.name} loading="lazy" />
+                      </div>
+                    )}
+
                     <div className="item-content">
                       <h4>{item.name}</h4>
                     </div>

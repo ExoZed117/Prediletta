@@ -8,14 +8,39 @@
           "name": "ESPRESSO",
           "description": "LA ESENCIA DEL CAFÉ: UN EXTRACTO CONCENTRADO, INTENSO Y AROMÁTICO.",
           "items": [
-            { "name": "ESPRESSO", "price": "8 BS", "desc": "La esencia pura del café" },
-            { "name": "MACCHIATO", "price": "10 BS", "desc": "Espresso pequeño con un toque de espuma de leche" },
+            { 
+              "name": "ESPRESSO", 
+              "price": "8 BS", 
+              "desc": "La esencia pura del café", 
+              "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1764047042/Esspresso_mtapms.jpg" 
+            },
+            { 
+              "name": "MACCHIATO", 
+              "price": "10 BS", 
+              "desc": "Espresso pequeño con un toque de espuma de leche", 
+              "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1764047042/Machiatto_ggk1lu.jpg" 
+            },
             { "name": "CORTADO", "price": "12 BS", "desc": "Espresso acompañado con un poco de leche caliente" },
-            { "name": "AMERICANO", "price": "12 BS", "desc": "Espresso alargado con agua caliente, ligero" },
+            { 
+              "name": "AMERICANO", 
+              "price": "12 BS", 
+              "desc": "Espresso alargado con agua caliente, ligero", 
+              "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1764047042/Americano_jrpbdl.jpg" 
+            },
             { "name": "CAPUCHINO", "price": "15 BS", "desc": "Espresso con leche caliente y generosa capa de espuma" },
-            { "name": "LATTE", "price": "16 BS", "desc": "Espresso con abundante leche caliente y fina espuma" },
+            { 
+              "name": "LATTE", 
+              "price": "16 BS", 
+              "desc": "Espresso con abundante leche caliente y fina espuma", 
+              "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1764047041/Latte_robi3b.jpg" 
+            },
             { "name": "MOCACCHINO", "price": "17 BS", "desc": "Espresso con leche y toque de chocolate" },
-            { "name": "AFFOGATO", "price": "20 BS", "desc": "Bola de helado \"ahogada\" en espresso caliente" },
+            { 
+              "name": "AFFOGATO", 
+              "price": "20 BS", 
+              "desc": "Bola de helado \"ahogada\" en espresso caliente",
+              "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1764047041/Helado_8_ogvuik.jpg"
+            },
             { "name": "CAFÉ BOMBÓN", "price": "22 BS", "desc": "Espresso con leche condensada" }
           ]
         },
@@ -71,7 +96,12 @@
       "availability": "PREGUNTAR DISPONIBILIDAD DEL DÍA",
       "items": [
         { "name": "TORTA DE CHOCOLATE CON GANACHE", "price": "20 BS", "desc": "Húmeda, intensa y con capa cremosa de ganache" },
-        { "name": "TORTA DE ZANAHORIA CON LIMÓN", "price": "18 BS", "desc": "Esponjosa y aromática con dulzura natural" },
+        { 
+          "name": "TORTA DE ZANAHORIA CON LIMÓN", 
+          "price": "18 BS", 
+          "desc": "Esponjosa y aromática con dulzura natural",
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1764047042/Integral_xcwuak.jpg"
+        },
         { "name": "TORTA RED VELVET", "price": "18 BS", "desc": "Clásica y sofisticada con color rojo inconfundible" },
         { "name": "TORTA DE FRUTOS ROJOS CON PISTACHO", "price": "20 BS", "desc": "Combinación fresca y elegante" }
       ]
@@ -85,7 +115,12 @@
         { "name": "BROWNIE RED VELVET", "price": "10 BS", "desc": "Suave y esponjoso en versión brownie" },
         { "name": "BROWNIE TRES LECHES", "price": "12 BS", "desc": "Versión única, húmeda y cremosa" },
         { "name": "BROWNIE CHEESECAKE DE OREO", "price": "12 BS", "desc": "Intensidad con capa cremosa de cheesecake" },
-        { "name": "BROWNIE CON HELADO", "price": "22 BS", "desc": "Brownie artesanal con helado de tu elección" },
+        { 
+          "name": "BROWNIE CON HELADO", 
+          "price": "22 BS", 
+          "desc": "Brownie artesanal con helado de tu elección", 
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1764047041/Brownie_bonx9g.jpg" 
+        },
         { "name": "ALFAJOR DE CHOCOLATE", "price": "8 BS", "desc": "Masa artesanal con relleno cremoso de chocolate" },
         { "name": "ALFAJOR DE FRUTOS ROJOS CON PISTACHO", "price": "9 BS", "desc": "Combinación sofisticada y elegante" },
         { "name": "ALFAJOR DE ALMENDRA", "price": "10 BS", "desc": "Masa suave con deliciosa crema de almendra" },
@@ -98,7 +133,12 @@
       "items": [
         { "name": "EMPANADA CASERA", "price": "6 BS", "desc": "Masa suave y dorada rellena con queso" },
         { "name": "CROISSANT DE JAMÓN Y QUESO", "price": "9 BS", "desc": "Croissant rellena de jamón y queso" },
-        { "name": "EMPANADA INTEGRAL", "price": "8 BS", "desc": "Masa integral doradita rellena de queso" },
+        { 
+          "name": "EMPANADA INTEGRAL", 
+          "price": "8 BS", 
+          "desc": "Masa integral doradita rellena de queso", 
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1764047042/EmpanadaIntegral_qxi1mc.jpg" 
+        },
         { 
           "name": "PASTEL DE CHOCLO", 
           "price": "11 BS", 
@@ -111,7 +151,12 @@
       "id": "sandwiches",
       "title": "SÁNDWICHES",
       "items": [
-        { "name": "SÁNDWICH DE POLLO", "price": "22 BS", "desc": "Pollo desmenuzado con especias suaves y albaca" },
+        { 
+          "name": "SÁNDWICH DE POLLO", 
+          "price": "22 BS", 
+          "desc": "Pollo desmenuzado con especias suaves y albaca", 
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1764047042/Sandwich_dePollo_ewgg5c.jpg" 
+        },
         { "name": "SÁNDWICH DE LOMITO", "price": "25 BS", "desc": "Carne de lomito con tomate fresco y huevo" },
         { "name": "SÁNDWICH PHILADELPHIA", "price": "29 BS", "desc": "Carne desmechada con queso fundido y vegetales" }
       ]
@@ -146,22 +191,22 @@
         { 
           "name": "GUSANITO TROPICAL", 
           "price": "23 BS", 
-          "desc": "Chocolate + Oreo + Dulce de Leche - Contraste divertido entre lo dulce, ácido y cremoso" 
+          "desc": "Chocolate + Oreo + Dulce de Leche - Contraste divertido entre lo dulce, ácido y cremoso"
         },
         { 
           "name": "PRIMAVERA", 
           "price": "25 BS", 
-          "desc": "Frutos Rojos + Chirimoya + Vainilla - Suave, frutal y perfumado" 
+          "desc": "Frutos Rojos + Chirimoya + Vainilla - Suave, frutal y perfumado"
         },
         { 
           "name": "VERANO", 
           "price": "25 BS", 
-          "desc": "Maracuyá + Vainilla + Frutos Rojos - Refrescante y ligero" 
+          "desc": "Maracuyá + Vainilla + Frutos Rojos - Refrescante y ligero"
         },
         { 
           "name": "BANANA SPLIT", 
           "price": "30 BS", 
-          "desc": "Chocolate + Vainilla + Dulce de Leche - Clásico con banana, crema y salsa" 
+          "desc": "Chocolate + Vainilla + Dulce de Leche - Clásico con banana, crema y salsa"
         }
       ]
     },
