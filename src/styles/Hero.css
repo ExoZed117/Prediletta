@@ -1,6 +1,9 @@
 /* Hero Section estilo referencia */
 .hero {
+  /* Fallback para navegadores viejos */
   height: 100vh;
+  /* Altura dinámica para móviles modernos (evita que la barra de url tape contenido) */
+  height: 100dvh; 
   position: relative;
   display: flex;
   align-items: center;
@@ -35,9 +38,9 @@
   height: 100%;
   background: linear-gradient(
     45deg,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.4) 50%,
-    rgba(0, 0, 0, 0.8) 100%
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.85) 100%
   );
 }
 
@@ -45,11 +48,20 @@
   text-align: center;
   z-index: 2;
   max-width: 1200px;
-  padding: 0 2rem;
+  width: 100%; /* Asegura que no se desborde */
+  padding: 0 1.5rem;
+  /* Flex para centrar mejor en vertical si sobra espacio */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .title-container {
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
+  /* Evita que el texto se rompa de forma fea */
+  width: 100%;
+  overflow: hidden; 
 }
 
 .hero-title {
@@ -58,13 +70,14 @@
   letter-spacing: 8px;
   text-transform: uppercase;
   margin: 0;
-  line-height: 0.8;
+  line-height: 0.85; /* Un poco más de aire para que no se peguen tanto */
   opacity: 0.9;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  white-space: nowrap; /* Mantiene PREDILETTA en una línea en PC */
 }
 
 .hero-title:nth-child(even) {
-  opacity: 0.7;
+  opacity: 0.6; /* Un poco más sutil */
 }
 
 .hero-title:nth-child(odd) {
@@ -73,6 +86,7 @@
 
 .hero-description {
   margin-bottom: 3rem;
+  max-width: 600px; /* Para que el texto no sea eterno de leer */
 }
 
 .hero-description p {
@@ -81,6 +95,7 @@
   text-transform: uppercase;
   margin: 0.5rem 0;
   font-weight: 300;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
 }
 
 .hero-actions {
@@ -88,6 +103,7 @@
   gap: 1.5rem;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .cta-primary {
@@ -96,20 +112,26 @@
   border: none;
   padding: 1.2rem 3rem;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600; /* Un poco más grueso para leer mejor */
   letter-spacing: 2px;
   text-transform: uppercase;
   transition: all 0.3s ease;
   border: 1px solid var(--color-accent);
+  cursor: pointer;
+  border-radius: 4px; /* Un toque sutil de borde */
 }
 
 .cta-primary:hover {
   background: transparent;
   border-color: var(--color-light);
   transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* Responsive para Hero */
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
 @media (max-width: 1024px) {
   .hero-title {
     font-size: 6rem;
@@ -117,12 +139,19 @@
   }
 }
 
+/* Tablets y Celulares Grandes */
 @media (max-width: 768px) {
   .hero-title {
-    font-size: 3.5rem;
+    /* Clamp ayuda a que el texto escale fluidamente */
+    font-size: clamp(3rem, 10vw, 5rem);
     letter-spacing: 4px;
+    line-height: 0.9;
   }
   
+  .title-container {
+    margin-bottom: 2rem;
+  }
+
   .hero-description p {
     font-size: 1rem;
     letter-spacing: 2px;
@@ -133,20 +162,55 @@
     gap: 1rem;
   }
   
-  .cta-primary,
-  .cta-secondary {
+  .cta-primary {
     padding: 1rem 2rem;
-    width: 200px;
+    width: 100%; /* Botón ancho para dedo */
+    max-width: 280px; /* Pero no gigante */
   }
 }
 
+/* Celulares Pequeños (iPhone SE, etc) */
 @media (max-width: 480px) {
+  .hero-content {
+    padding: 0 1rem;
+  }
+
   .hero-title {
-    font-size: 2.5rem;
-    letter-spacing: 3px;
+    /* Aquí usamos VW para asegurar que entre en pantalla */
+    font-size: 13vw; 
+    letter-spacing: 2px;
+    line-height: 0.9;
   }
   
-  .title-container {  
-    margin-bottom: 2rem;
+  .title-container { 
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-description p {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .cta-primary {
+    width: 100%;
+    max-width: 100%; /* Botón full width */
+    font-size: 0.85rem;
+  }
+}
+
+/* Ajuste para pantallas muy cortas (Horizontal) */
+@media (max-height: 500px) {
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    padding: 6rem 0; /* Dar espacio para scroll */
+  }
+  
+  .hero-title {
+    font-size: 3rem;
   }
 }

@@ -4,7 +4,8 @@
   width: 100%;
   top: 0;
   z-index: 1000;
-  padding: 2rem 0;
+  /* Padding base un poco más pequeño para empezar */
+  padding: 1.5rem 0;
   transition: all 0.3s ease;
 }
 
@@ -22,23 +23,27 @@
 .header-container {
   max-width: 1400px;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 0 3rem;
+
+  /* Usamos GRID de 3 columnas para PC: Izquierda - Centro - Derecha */
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
 }
 
-/* Logo - Estilos modificados */
+/* Logo */
 .logo {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  justify-self: start; /* PC: Pegado a la izquierda */
+  text-decoration: none;
 }
 
 .logo-img {
   height: 60px;
   width: auto;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .logo-text {
@@ -47,10 +52,11 @@
   letter-spacing: 3px;
   color: var(--color-light);
   text-transform: uppercase;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: all 0.3s ease;
+  white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
 }
 
-/* Cuando el header tiene scroll, ocultamos tanto el logo como el texto */
+/* Efecto al hacer scroll */
 .header.scrolled .logo-img,
 .header.scrolled .logo-text {
   opacity: 0;
@@ -59,6 +65,10 @@
 }
 
 /* Navegación Desktop */
+.nav {
+  justify-self: center; /* PC: Centrado */
+}
+
 .nav ul {
   list-style: none;
   display: flex;
@@ -97,13 +107,15 @@
   width: 100%;
 }
 
-/* Botones del Header */
+/* Acciones (Carrito y Menú Móvil) */
 .header-actions {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  justify-self: end; /* PC: Pegado a la derecha */
 }
 
+/* Botón Carrito */
 .cart-btn {
   background: transparent;
   border: none;
@@ -113,25 +125,19 @@
   padding: 0.5rem;
   border-radius: 50%;
   transition: all 0.3s ease;
-}
-
-.cart-icon {
   color: var(--color-accent);
-  transition: color 0.3s ease;
+  display: flex; /* Para centrar el icono */
 }
 
 .cart-btn:hover {
   background: rgba(255, 107, 53, 0.1);
-}
-
-.cart-btn:hover .cart-icon {
   color: var(--color-light);
 }
 
 .cart-badge {
   position: absolute;
-  top: -6px;
-  right: -6px;
+  top: -5px;
+  right: -5px;
   background: var(--color-accent);
   color: var(--color-white);
   font-size: 0.7rem;
@@ -141,305 +147,111 @@
   font-weight: 700;
   min-width: 18px;
   text-align: center;
+  border: 2px solid var(--color-dark); /* Pequeño borde para separar */
 }
 
-.reservation-btn {
-  background: transparent;
-  color: var(--color-light);
-  border: 1px solid var(--color-light);
-  padding: 0.8rem 2rem;
-  font-size: 0.9rem;
-  font-weight: 400;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-  border-radius: 4px;
-}
-
-.reservation-btn:hover {
-  background: var(--color-light);
-  color: var(--color-dark);
-  border-color: var(--color-light);
-}
-
-/* Menú Móvil */
+/* Botón Menú Móvil */
 .mobile-menu-btn {
-  display: none;
+  display: none; /* Oculto en PC */
   background: none;
   border: none;
   color: var(--color-light);
   font-size: 1.8rem;
   cursor: pointer;
   padding: 0.5rem;
-  border-radius: 4px;
   transition: all 0.3s ease;
-  z-index: 1001;
 }
 
-.mobile-menu-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* Overlay del Menú Móvil */
+/* Overlay Menú Móvil */
 .mobile-menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9);
-  backdrop-filter: blur(10px);
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.8); /* Un poco menos oscuro */
+  backdrop-filter: blur(5px);
   z-index: 999;
-  opacity: 0;
-  visibility: hidden;
+  opacity: 0; visibility: hidden;
   transition: all 0.3s ease;
 }
+.mobile-menu-overlay.active { opacity: 1; visibility: visible; }
 
-.mobile-menu-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Menú Móvil */
+/* Panel Menú Móvil */
 .mobile-menu {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 300px;
+  position: fixed; top: 0; right: -100%; width: 280px; /* Un poco más angosto */
   height: 100%;
   background: var(--color-dark);
   z-index: 1000;
   transition: right 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+  display: flex; flex-direction: column; padding: 2rem;
+  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
 }
-
-.mobile-menu.active {
-  right: 0;
-}
+.mobile-menu.active { right: 0; }
 
 .mobile-menu-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 3rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--color-border);
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);
 }
+.mobile-menu-logo { font-size: 1.2rem; color: var(--color-light); letter-spacing: 2px; font-weight: 300;}
+.mobile-close-btn { background: none; border: none; color: var(--color-light); font-size: 1.8rem; cursor: pointer; padding: 0.5rem; }
 
-.mobile-menu-logo {
-  font-size: 1.3rem;
-  font-weight: 300;
-  letter-spacing: 2px;
-  color: var(--color-light);
-  text-transform: uppercase;
-}
-
-.mobile-close-btn {
-  background: none;
-  border: none;
-  color: var(--color-light);
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-.mobile-close-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--color-accent);
-}
-
-.mobile-nav {
-  flex: 1;
-}
-
-.mobile-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
+.mobile-nav ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
 .mobile-nav-link {
-  color: var(--color-light);
-  font-size: 1.1rem;
-  font-weight: 400;
+  color: var(--color-light); font-size: 1rem; text-decoration: none;
+  padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: block;
   letter-spacing: 1px;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-  display: block;
 }
+.mobile-nav-link:hover { color: var(--color-accent); padding-left: 10px; }
 
-.mobile-nav-link:hover {
-  color: var(--color-accent);
-  padding-left: 1rem;
-}
-
-.mobile-nav-link.active {
-  color: var(--color-accent);
-  border-bottom-color: var(--color-accent);
-}
-
-.mobile-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--color-border);
-}
-
+.mobile-actions { margin-top: auto; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
 .mobile-cart-btn {
-  background: transparent;
-  border: 1px solid var(--color-accent);
-  color: var(--color-accent);
-  padding: 1rem;
-  font-size: 1rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  background: transparent; border: 1px solid var(--color-accent); color: var(--color-accent);
+  padding: 0.9rem; width: 100%; border-radius: 4px; cursor: pointer; display: flex; justify-content: center; gap: 0.5rem;
+  font-size: 0.9rem; letter-spacing: 1px; transition: all 0.3s ease;
 }
+.mobile-cart-btn:hover { background: var(--color-accent); color: var(--color-light); }
 
-.mobile-cart-btn:hover {
-  background: var(--color-accent);
-  color: var(--color-white);
-}
 
-.mobile-reservation-btn {
-  background: var(--color-accent);
-  color: var(--color-white);
-  border: none;
-  padding: 1rem;
-  font-size: 1rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+/* =========================================
+   RESPONSIVE (Móvil y Tablet)
+   ========================================= */
 
-.mobile-reservation-btn:hover {
-  background: var(--color-primary);
-  transform: translateY(-2px);
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .header-container {
-    padding: 0 2rem;
-  }
-  
-  .nav ul {
-    gap: 2rem;
-  }
-}
-
+/* Tablets y celulares grandes */
 @media (max-width: 768px) {
+  .header {
+    padding: 1rem 0; /* Header más delgado */
+  }
+
   .header-container {
     padding: 0 1.5rem;
+    /* Volvemos a Flex para móvil, es más fácil de manejar aquí */
+    display: flex;
+    justify-content: space-between;
+    /* ¡IMPORTANTE! Alinea verticalmente el logo y los iconos */
+    align-items: center;
   }
-  
-  /* Ocultar navegación desktop */
-  .nav {
-    display: none;
-  }
-  
-  .header-actions .reservation-btn {
-    display: none;
-  }
-  
-  /* Mostrar botón móvil */
-  .mobile-menu-btn {
-    display: block;
-  }
-  
-  .logo-text {
-    font-size: 1.3rem;
-    letter-spacing: 2px;
-  }
-  
-  .cart-btn {
-    font-size: 1.5rem;
-  }
+
+  /* Ocultamos menú de PC y mostramos el de móvil */
+  .nav { display: none; }
+  .mobile-menu-btn { display: block; }
+
+  /* Ajustamos tamaños del logo */
+  .logo-text { font-size: 1.2rem; letter-spacing: 2px; }
+  .logo-img { height: 50px; }
+
+  /* Juntamos un poco los iconos de la derecha */
+  .header-actions { gap: 1rem; }
+  .cart-btn { font-size: 1.3rem; }
 }
 
+/* Celulares pequeños */
 @media (max-width: 480px) {
   .header-container {
-    padding: 0 1rem;
+    padding: 0 1rem; /* Menos padding lateral */
   }
-  
-  .header.scrolled {
-    padding: 0.8rem 0;
-  }
-  
-  .logo-text {
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-  }
-  
-  .mobile-menu {
-    width: 100%;
-  }
-  
-  .cart-badge {
-    font-size: 0.6rem;
-    padding: 0.15rem 0.3rem;
-    min-width: 16px;
-  }
-}
 
-/* Animaciones */
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+  /* Logo aún más pequeño */
+  .logo-text { font-size: 1rem; letter-spacing: 1px; }
+  .logo-img { height: 40px; gap: 0.5rem; }
 
-.mobile-nav li {
-  animation: slideInRight 0.3s ease forwards;
-}
-
-.mobile-nav li:nth-child(1) { animation-delay: 0.1s; }
-.mobile-nav li:nth-child(2) { animation-delay: 0.15s; }
-.mobile-nav li:nth-child(3) { animation-delay: 0.2s; }
-.mobile-nav li:nth-child(4) { animation-delay: 0.25s; }
-
-/* Mejoras de accesibilidad */
-@media (prefers-reduced-motion: reduce) {
-  .header,
-  .mobile-menu,
-  .mobile-nav li {
-    transition: none;
-    animation: none;
-  }
-}
-
-.nav-link:focus,
-.cart-btn:focus,
-.mobile-menu-btn:focus,
-.mobile-close-btn:focus,
-.mobile-nav-link:focus {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
+  .header-actions { gap: 0.5rem; }
+  .cart-btn { padding: 0.4rem; }
+  .mobile-menu-btn { padding: 0.4rem; font-size: 1.5rem; }
 }
