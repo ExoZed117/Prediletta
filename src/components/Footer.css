@@ -12,7 +12,7 @@
 
 .footer-content {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 2fr; /* Marca a la izq, enlaces a la der */
   gap: 4rem;
   margin-bottom: 3rem;
 }
@@ -22,11 +22,12 @@
   font-weight: 300;
   letter-spacing: 3px;
   color: var(--color-light);
+  display: block;
+  margin-bottom: 1rem;
 }
 
 .footer-description {
   color: #B0B0B0;
-  margin-top: 1rem;
   font-size: 1rem;
   line-height: 1.6;
   max-width: 300px;
@@ -34,7 +35,7 @@
 
 .footer-links {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas de links */
   gap: 2rem;
 }
 
@@ -47,26 +48,18 @@
   font-weight: 500;
 }
 
-.link-group p {
+.link-group p, 
+.link-group a {
   color: #B0B0B0;
   margin-bottom: 0.8rem;
   font-size: 0.9rem;
   line-height: 1.5;
-}
-
-.social-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.social-links a {
-  color: #B0B0B0;
-  font-size: 0.9rem;
+  display: block;
+  text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.social-links a:hover {
+.link-group a:hover {
   color: var(--color-accent);
 }
 
@@ -80,21 +73,47 @@
   color: #888;
   font-size: 0.8rem;
   letter-spacing: 1px;
-  text-transform: uppercase;
 }
 
-@media (max-width: 768px) {
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 900px) {
   .footer-content {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Todo en una columna */
     gap: 3rem;
+    text-align: center; /* Centramos todo */
+  }
+
+  .footer-description {
+    margin: 0 auto; /* Centrar texto descripción */
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr; /* Enlaces uno debajo de otro */
+    gap: 2.5rem;
   }
   
-  .footer-links {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  /* Ajuste para que los iconos sociales se vean centrados */
+  .social-links {
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 3rem 0 1.5rem;
   }
   
   .footer-container {
-    padding: 0 1rem;
+    padding: 0 1.5rem;
+  }
+  
+  .link-group h4 {
+    margin-bottom: 1rem;
+    color: var(--color-accent); /* Destacar títulos en móvil */
   }
 }
+
+/* Fin Footer.css */
