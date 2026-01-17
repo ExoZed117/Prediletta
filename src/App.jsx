@@ -7,7 +7,7 @@ import About from './components/About'
 import Gallery from './components/Gallery'
 import Info from './components/Info'
 
-// ✅ Importamos el contexto y el modal
+
 import { useCart } from './context/CartContext'
 import CartModal from './components/CartModal'
 
