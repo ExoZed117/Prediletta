@@ -303,3 +303,49 @@
 .order-modal::-webkit-scrollbar-thumb:hover {
   background: var(--color-text-light);
 }
+
+/* Agrega esto al final de tu OrderModal.css */
+
+.modal-actions-nav {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.back-btn {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-light);
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.back-btn:hover {
+  background: #f5f5f5;
+  color: var(--color-text);
+  border-color: var(--color-text-light);
+}
+
+.send-btn {
+  flex: 1;
+}
+
+.summary-list {
+  max-height: 120px;
+  overflow-y: auto;
+  margin-bottom: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+/* Scrollbar sutil para el resumen del modal */
+.summary-list::-webkit-scrollbar {
+  width: 4px;
+}
+.summary-list::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
