@@ -1,14 +1,19 @@
+/* src/index.css */
 :root {
   font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
   font-weight: 400;
   
-  /* Nueva paleta inspirada en la referencia */
-  --color-dark: #000000;
-  --color-light: #FFFFFF;
-  --color-accent: #FF6B35;
+  /* Paleta corregida y completada */
+  --color-dark: #0F2013;       /* Un verde oscuro premium/cafetería en lugar de negro puro */
+  --color-primary: #1E3522;    /* Verde hoja intermedio */
+  --color-light: #FBF9F6;      /* Blanco roto/crema para un look bister premium */
+  --color-white: #FFFFFF;
+  --color-accent: #FF6B35;     /* Tu naranja vibrante */
   --color-text: #1A1A1A;
   --color-text-light: #666666;
+  --color-border: #E5E0D8;
+  --color-border-light: #F0EDE7;
   --color-overlay: rgba(0, 0, 0, 0.7);
   
   font-synthesis: none;
@@ -24,23 +29,7 @@
 }
 
 body {
-  margin: 0;
   color: var(--color-text);
   background-color: var(--color-light);
   min-height: 100vh;
-  font-family: 'Inter', sans-serif;
-}
-
-#root {
-  min-height: 100vh;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-button {
-  font-family: inherit;
-  cursor: pointer;
 }
