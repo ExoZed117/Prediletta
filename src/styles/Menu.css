@@ -228,9 +228,8 @@ html {
   margin-bottom: 2rem;
   line-height: 1.6;
 }
-
 /* ==========================================================================
-   5. TARJETAS DE PRODUCTOS (ESTRUCTURA CORREGIDA BISTRO)
+   5 y 6. TARJETAS DE PRODUCTOS Y EFECTO POP-UP ELEVADO (CORREGIDO)
    ========================================================================== */
 .menu-item {
   display: flex;
@@ -240,38 +239,46 @@ html {
   background: var(--color-white);
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, z-index 0s;
   border: 1px solid var(--color-border-light);
   gap: 1.5rem;
+  position: relative; /* Contexto base indispensable */
+  z-index: 1;         /* Estado normal en capa baja */
 }
 
-.menu-item:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
-}
-
-/* Modificador cuando el item tiene imagen (Fija a la izquierda) */
+/* Modificador cuando el item tiene imagen */
 .menu-item.has-image {
-  flex-direction: row; /* Fuerza orden horizontal */
+  flex-direction: row; 
   align-items: center;
 }
 
-/* Contenedor de la Imagen a la Izquierda */
+/* IMPORTANTE: Cuando se pasa el mouse por CUALQUIER parte de la tarjeta, 
+   esta se eleva por encima de las tarjetas vecinas inmediatamente */
+.menu-item:hover,
+.menu-item:focus-within {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
+  z-index: 10; /* Sube la tarjeta completa para que nada de abajo la tape */
+}
+
+/* Contenedor de la Imagen */
 .item-image-container {
-  width: 75px;
-  height: 75px;
-  min-width: 75px; /* Evita que flexbox la comprima */
+  width: 90px;
+  height: 90px;
+  min-width: 90px; 
   border-radius: 50%;
   border: 2px solid var(--color-accent);
   padding: 2px;
   background: var(--color-white);
   cursor: pointer;
   position: relative;
-  z-index: 5;
-  transform-origin: left center; /* El efecto POP se expande hacia la derecha elegantemente */
-  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), 
+  z-index: 2;
+  transform-origin: center center;
+  /* Animación súper fluida al entrar y salir */
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
               border-radius 0.3s ease, 
+              border-color 0.3s ease, 
               box-shadow 0.3s ease;
 }
 
@@ -283,21 +290,26 @@ html {
   transition: border-radius 0.3s ease;
 }
 
-/* EFECTO POP MEJORADO (Estilo Polaroid Flotante) */
-.item-image-container:hover {
-  transform: scale(2.8);
-  border-radius: 8px;
-  z-index: 99;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+/* --- EFECTO HOVER Y TOQUE EN LA IMAGEN ---
+   Activamos el efecto tanto si pasan el mouse por la imagen (:hover) 
+   como si la presionan en el celular (:active) */
+.item-image-container:hover,
+.item-image-container:active {
+  transform: scale(2.6); /* Magnificación premium */
+  border-radius: 12px;   /* Se vuelve un cuadrado redondeado estilo polaroid */
+  border-color: var(--color-white);
+  z-index: 999;          /* Rompe absolutamente cualquier capa y se pone al frente */
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35); /* Sombra pesada de flotación */
 }
 
-.item-image-container:hover img {
-  border-radius: 6px;
+.item-image-container:hover img,
+.item-image-container:active img {
+  border-radius: 10px;   /* La imagen interna se adapta al contenedor */
 }
 
 /* Contenido Informativo (Centro) */
 .item-content {
-  flex: 1; /* Toma todo el espacio del centro */
+  flex: 1; 
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -318,139 +330,6 @@ html {
   margin: 0;
   max-width: 480px;
 }
-
-/* Contenedor de Precio y Botón (Derecha) */
-.item-actions {
-  display: flex;
-  flex-direction: column; /* Alineación vertical premium */
-  align-items: flex-end;
-  gap: 0.5rem;
-  min-width: 110px;
-}
-
-.item-price {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-accent);
-  margin: 0;
-  white-space: nowrap;
-}
-
-.add-btn {
-  background: var(--color-accent);
-  color: var(--color-white);
-  border: none;
-  padding: 0.5rem 1.2rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background-color 0.25s ease, transform 0.2s ease;
-}
-
-.add-btn:hover {
-  background: var(--color-primary);
-}
-
-/* ==========================================================================
-   RESPONSIVE (MÓVILES)
-   ========================================================================== */
-@media (max-width: 600px) {
-  .menu-item {
-    padding: 1rem;
-    gap: 1rem;
-  }
-
-  .menu-item.has-image {
-    flex-direction: row; /* Mantiene la foto a la izquierda incluso en celulares */
-    align-items: center;
-  }
-
-  .item-image-container {
-    width: 60px;
-    height: 60px;
-    min-width: 60px;
-  }
-  
-  /* Reducimos el POP en celulares para que no tape los bordes de la pantalla */
-  .item-image-container:hover {
-    transform: scale(2.2);
-  }
-
-  .item-content h4 {
-    font-size: 1rem;
-  }
-
-  .item-content p {
-    font-size: 0.8rem;
-  }
-
-  .item-actions {
-    min-width: 85px;
-  }
-
-  .item-price {
-    font-size: 1.1rem;
-  }
-
-  .add-btn {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.75rem;
-  }
-}
-
-/* ==========================================================================
-   6. COMPONENTE DE IMAGEN POP-UP MAGICA (Solucionado solapamiento)
-   ========================================================================== */
-.menu-item.has-image {
-  flex-direction: row;
-  align-items: center;
-  padding: 1.2rem;
-  gap: 1.5rem;
-  position: relative;
-}
-
-.item-image-container {
-  width: 90px;
-  height: 90px;
-  min-width: 90px;
-  border-radius: 50%;
-  border: 2px solid var(--color-accent);
-  padding: 2px;
-  background: white;
-  cursor: pointer;
-  z-index: 2;
-  transform-origin: center center;
-  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), 
-              border-radius 0.3s ease, 
-              border-color 0.3s ease, 
-              box-shadow 0.3s ease,
-              margin 0.3s ease;
-}
-
-.item-image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  transition: border-radius 0.3s ease;
-}
-
-/* Efecto Hover Polaroid Limpio */
-.item-image-container:hover {
-  transform: scale(2.6);
-  border-radius: 8px;
-  border-color: var(--color-white);
-  z-index: 99;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  margin-right: 15px;
-}
-
-.item-image-container:hover img {
-  border-radius: 6px;
-}
-
 /* ==========================================================================
    7. ACCIONES, PRECIOS Y BOTONES
    ========================================================================== */

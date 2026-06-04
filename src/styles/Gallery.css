@@ -26,10 +26,11 @@
 
 .gallery-item {
   position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+  background: #111; /* O el color de tu diseño Dark Luxury */
+  border-radius: 12px;
+  overflow: visible; /* ¡IMPORTANTE! Si está en hidden, la imagen no se sobrepondrá por fuera del borde */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
 }
 
 .gallery-item:hover {
