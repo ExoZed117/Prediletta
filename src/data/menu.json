@@ -60,7 +60,7 @@
               "name": "AFFOGATO", 
               "price": "20 BS", 
               "desc": "Bola de helado \"ahogada\" en espresso caliente",
-              "image": ""
+              "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780689656/AFFOGATO_gl0psl.png"
             },
             { 
               "name": "CAFÉ BOMBÓN", 
@@ -77,10 +77,16 @@
               "name": "CHOCOLATE", 
               "price": "10 BS", 
               "desc": "Leche caliente mezclada con cacao",
-              "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546551/WhatsApp_Image_2026-06-03_at_23.40.15_tl93ng.jpg"
+              "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780689796/Leche_con_Chocolate_wyiv94.png"
             },
-            { "name": "SUBMARINO", "price": "15 BS", "desc": "Leche caliente con barra de chocolate derretido" },
-            { "name": "NUBE CALIENTE", "price": "20 BS", "desc": "Leche caliente con malvaviscos y crema" }
+            { "name": "SUBMARINO", "price": "15 BS",
+             "desc": "Leche caliente con barra de chocolate derretido",
+             "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780689982/submarino_hmlhai.png"},
+             
+            { "name": "NUBE CALIENTE",
+              "price": "20 BS",
+              "desc": "Leche caliente con malvaviscos y crema",
+              "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780690164/nube_caliente_zux5m8.png" }
           ]
         },
         {
@@ -114,7 +120,8 @@
         },
         { "name": "FRAPPE DE DULCE DE LECHE", 
         "price": "22 BS", 
-        "desc": "Mezcla cremosa y suave del clásico argentino" },
+        "desc": "Mezcla cremosa y suave del clásico argentino",
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780690373/Frape_leche_u8mh1b.png" },
         { 
           "name": "FRAPPE DE OREO", 
           "price": "25 BS", 
@@ -127,9 +134,18 @@
           "desc": "Refrescante fusión de menta, chocolate y café helado",
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546512/FrappeChocoMenta_pn3ehv.jpg"
         },
-        { "name": "FRAPPE DE FRUTOS DEL BOSQUE", "price": "27 BS", "desc": "Refrescante, frutal y ligero" },
-        { "name": "FRAPPE DE PISTACHO", "price": "27 BS", "desc": "Toque cremoso con sabor único del pistacho" },
-        { "name": "FRAPPE DE BOMBÓN", "price": "30 BS", "desc": "El famoso bombón convertido en frappe" }
+        { "name": "FRAPPE DE FRUTOS DEL BOSQUE",
+          "price": "27 BS",
+          "desc": "Refrescante, frutal y ligero",
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780690817/rojos_jel4oc.png" },
+        { "name": "FRAPPE DE PISTACHO",
+          "price": "27 BS",
+          "desc": "Toque cremoso con sabor único del pistacho", 
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780689982/submarino_hmlhai.png" },
+        { "name": "FRAPPE DE BOMBÓN",
+          "price": "30 BS",
+          "desc": "El famoso bombón convertido en frappe",
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780690999/bombon_xgh7ly.png" }
       ]
     },
     {
@@ -140,18 +156,28 @@
           "name": "ICED LATTE CLÁSICO", 
           "price": "12 BS", 
           "desc": "Café espresso y leche fría servidos sobre hielo",
-          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546525/WhatsApp_Image_2026-06-03_at_23.40.15_1_zy2wem.jpg"
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546523/IceClasico_hoabkb.jpg"
         },
-        { "name": "ICED LATTE CARAMEL", "price": "14 BS", "desc": "Café helado con toque de caramelo" },
+        { "name": "ICED LATTE CARAMEL", "price": "14 BS", "desc": "Café helado con toque de caramelo" ,"image":"https://res.cloudinary.com/dupoow7pa/image/upload/v1780691190/ICED_LATTE_CARAMEL_sv11it.png" },
         { 
           "name": "ORANGE COFFEE", 
           "price": "14 BS", 
           "desc": "Sabor cítrico de naranja fusionado con café",
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546520/OrangeCoffe_ru5sqv.jpg"
         },
-        { "name": "ICED LATTE MOCCA", "price": "16 BS", "desc": "Café espresso con dulzor intenso del chocolate" },
-        { "name": "ICED LATTE CHOC MENTA", "price": "18 BS", "desc": "Café helado con menta fresca y chocolate" },
-        { "name": "ICED LATTE DE OREO", "price": "18 BS", "desc": "Galletas trituradas, leche y café" }
+        { "name": "ICED LATTE MOCCA", 
+        "price": "16 BS", 
+        "desc": "Café espresso con dulzor intenso del chocolate", 
+        "image":"https://res.cloudinary.com/dupoow7pa/image/upload/v1780691190/ICED_LATTE_CARAMEL_sv11it.png"  },
+        { "name": "ICED LATTE CHOC MENTA",
+         "price": "18 BS",
+          "desc": "Café helado con menta fresca y chocolate",
+          "image":"https://res.cloudinary.com/dupoow7pa/image/upload/v1780691438/iced_chocomenta_r3dikq.png"},
+        { "name": "ICED LATTE DE OREO",
+         "price": "18 BS", 
+         "desc": "Galletas trituradas, leche y café",
+         "image":"https://res.cloudinary.com/dupoow7pa/image/upload/v1780546522/Frappe_Oreo_jqcrip.jpg" 
+         }
       ]
     },
     {
@@ -177,7 +203,10 @@
           "desc": "Clásica y sofisticada con color rojo inconfundible",
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546519/Red_Velvet_uhh8fm.jpg"
         },
-        { "name": "TORTA DE FRUTOS ROJOS CON PISTACHO", "price": "20 BS", "desc": "Combinación fresca y elegante" },
+        { "name": "TORTA DE FRUTOS ROJOS CON PISTACHO", 
+          "price": "20 BS", 
+          "desc": "Combinación fresca y elegante",
+        "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546517/WhatsApp_Image_2026-06-03_at_23.40.06_yapez1.jpg" },
         { 
           "name": "QUEQUE INTEGRAL", 
           "price": "12 BS", 
@@ -199,7 +228,8 @@
         { 
           "name": "BROWNIE CLÁSICO", 
           "price": "9 BS", 
-          "desc": "Intenso, chocolatoso y esponjoso"
+          "desc": "Intenso, chocolatoso y esponjoso",
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780692050/brownie_clasico_luw3lu.png"
         },
         { 
           "name": "BROWNIE SNICKERS", 
@@ -211,9 +241,12 @@
           "name": "BROWNIE RED VELVET", 
           "price": "10 BS", 
           "desc": "Suave y esponjoso en versión brownie",
-          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546524/Brownie_de_Redvelvet_kordhl.jpg"
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780692179/brownie_red_vutwcy.png"
         },
-        { "name": "BROWNIE TRES LECHES", "price": "12 BS", "desc": "Versión única, húmeda y cremosa" },
+        { "name": "BROWNIE TRES LECHES", 
+        "price": "12 BS", 
+        "desc": "Versión única, húmeda y cremosa",
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780691951/3leches_w0tvqz.png" },
         { 
           "name": "BROWNIE OREO", 
           "price": "12 BS", 
@@ -238,8 +271,15 @@
           "desc": "Masa artesanal con relleno cremoso de chocolate",
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546514/AlfajorChocolate_j13pqx.jpg"
         },
-        { "name": "ALFAJOR DE FRUTOS ROJOS CON PISTACHO", "price": "9 BS", "desc": "Combinación sofisticada y elegante" },
-        { "name": "ALFAJOR DE ALMENDRA", "price": "10 BS", "desc": "Masa suave con deliciosa crema de almendra" },
+        { "name": "ALFAJOR DE FRUTOS ROJOS CON PISTACHO", 
+          "price": "9 BS", 
+          "desc": "Combinación sofisticada y elegante",
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780692366/alfajor_pis_jlibch.png" },
+
+        { "name": "ALFAJOR DE ALMENDRA", 
+          "price": "10 BS", 
+          "desc": "Masa suave con deliciosa crema de almendra",
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780692558/almendra_kxya0q.png" },
         { 
           "name": "NAPOLEÓN MIL HOJAS", 
           "price": "15 BS", 
@@ -292,7 +332,8 @@
           "name": "PASTEL DE CHOCLO", 
           "price": "11 BS", 
           "desc": "Preparado con maíz molido fresco, anís y queso",
-          "note": "SOLO FINES DE SEMANA"
+          "note": "SOLO FINES DE SEMANA",
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780692612/chocloxD_ev6jy1.png"
         }
       ]
     },
@@ -312,8 +353,14 @@
           "desc": "Carne casera seleccionada, queso fundido y vegetales frescos", 
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546516/HamburguesaClasica_em4dci.jpg" 
         },
-        { "name": "SÁNDWICH DE LOMITO", "price": "25 BS", "desc": "Carne de lomito con tomate fresco y huevo" },
-        { "name": "SÁNDWICH PHILADELPHIA", "price": "29 BS", "desc": "Carne desmechada con queso fundido y vegetales" }
+        { "name": "SÁNDWICH DE LOMITO", 
+        "price": "25 BS", 
+        "desc": "Carne de lomito con tomate fresco y huevo" ,
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780692882/lomito_z3bky6.png"},
+        { "name": "SÁNDWICH PHILADELPHIA", 
+        "price": "29 BS", 
+        "desc": "Carne desmechada con queso fundido y vegetales",
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546515/SandwichDePollo_dmqr65.jpg" }
       ]
     },
     {

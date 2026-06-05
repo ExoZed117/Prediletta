@@ -7,11 +7,27 @@ import { faCartShopping, faBars, faTimes } from '@fortawesome/free-solid-svg-ico
 import '../components/Header.css'; 
 import logoImg from '../assets/img/Prediletta.png';
 
-const Header = ({ scrolled, dark }) => {
+// Quitamos 'scrolled' de las props porque ahora lo manejaremos internamente
+const Header = ({ dark }) => {
   const { count, setIsCartOpen } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false); // <--- NUEVO: Estado interno para el scroll
   const location = useLocation();
   const navigate = useNavigate();
+
+  // NUEVO: Escuchador global de scroll para activar la clase oscura
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true); // Si baja más de 50px, oscurece
+      } else {
+        setScrolled(false); // Si vuelve arriba, transparente
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -28,7 +44,6 @@ const Header = ({ scrolled, dark }) => {
     handleNavClick();
     if (location.pathname !== targetPath) {
       navigate(targetPath);
-      // Darle un breve timeout para que cargue el DOM de la nueva página
       if (sectionId) {
         setTimeout(() => {
           document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
@@ -41,6 +56,7 @@ const Header = ({ scrolled, dark }) => {
 
   return (
     <>
+      {/* Ahora scrolled cambiará a true dinámicamente aquí */}
       <header className={`header ${scrolled ? 'scrolled' : ''} ${dark ? 'dark' : ''}`}>
         <div className="header-container">
           <Link to="/" className="logo" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>

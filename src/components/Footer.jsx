@@ -17,31 +17,32 @@ const Footer = () => {
           <div className="footer-links">
             <div className="link-group">
               <h4>HORARIOS</h4>
-              <p>De lunes a sábado de 8:30 a 9:30</p>
-              <p>Domingo de 14:30 a 9:30</p>
+              <p>Lunes a Sábado: 8:30 a.m. a 21:30 p.m.</p>
+              <p>Domingo: 15:30 p.m. a 21:30 p.m.</p>
+              <p className="schedule-note">Feriados: Horario varía</p>
             </div>
             
             <div className="link-group">
               <h4>CONTACTO</h4>
-              <p>Av. Principal 123</p>
-              <p>Ciudad, País</p>
-              <p>+1 234 567 890</p>
-              <p>hola@prediletta.com</p>
+              <p>Calle Cochabamba casi Héroes del Chaco</p>
+              <p>Quillacollo, Bolivia</p>
+              <p>+591 70345866</p>
+              <p>Prediletta794@gmail.com</p>
             </div>
             
             <div className="link-group">
               <h4>SÍGUENOS</h4>
               <div className="social-links">
-                <a href="https://www.instagram.com/prediletta1825?igsh=ZWRoN2MxaGRyN2Fo">Instagram</a>
-                <a href="https://www.facebook.com/share/1JehRXhtH9/?mibextid=wwXIfr">Facebook</a>
-                <a href="#">WhatsApp</a>
+                <a href="https://www.instagram.com/prediletta1825?igsh=ZWRoN2MxaGRyN2Fo" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://www.facebook.com/share/1JehRXhtH9/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a href="https://wa.me/59170345866" target="_blank" rel="noopener noreferrer">WhatsApp</a>
               </div>
             </div>
           </div>
         </div>
         
         <div className="footer-bottom">
-          <p>&copy; 2025 PREDILETTA. TODOS LOS DERECHOS RESERVADOS.</p>
+          <p>&copy; 2026 PREDILETTA. TODOS LOS DERECHOS RESERVADOS.</p>
         </div>
       </div>
     </footer>

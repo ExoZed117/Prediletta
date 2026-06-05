@@ -348,7 +348,7 @@ const Menu = () => {
           </div>
           <div className="menu-hero-content">
             <h1>MENÚ</h1>
-            <p>EXPERIENCIAS ÚNICAS EN CADA BEBIDA</p>
+            
           </div>
         </section>
 

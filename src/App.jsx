@@ -20,7 +20,6 @@ function App() {
       <main>
         {/* Tu estructura modular actual */}
         <section id="inicio"><Hero /></section>
-        <section id="menu"><Menu /></section>
         <section id="info"><Info /></section>
         <section id="nosotros"><About /></section>
         <section id="galeria"><Gallery /></section>

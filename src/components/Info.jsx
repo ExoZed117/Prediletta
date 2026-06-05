@@ -9,11 +9,16 @@ export default function Info() {
           <p>
             En Prediletta, cada taza es el resultado de un meticuloso proceso…
           </p>
-          <button className="info-btn">CONOCER MÁS</button>
         </div>
 
         <div className="info-image">
-          <div className="image-placeholder"></div>
+          <div className="image-placeholder">
+            <img 
+              src="https://res.cloudinary.com/dupoow7pa/image/upload/v1780546524/LecheConChocolate_cvvcqp.jpg" 
+              alt="Café de Especialidad Prediletta" 
+              className="info-img-fluid"
+            />
+          </div>
         </div>
       </div>
     </section>

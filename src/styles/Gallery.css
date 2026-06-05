@@ -26,9 +26,9 @@
 
 .gallery-item {
   position: relative;
-  background: #111; /* O el color de tu diseño Dark Luxury */
+  background: #111; 
   border-radius: 12px;
-  overflow: visible; /* ¡IMPORTANTE! Si está en hidden, la imagen no se sobrepondrá por fuera del borde */
+  overflow: hidden; /* Esto asegura que las fotos y el degradado respeten el redondeado de la tarjeta */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   z-index: 1;
 }

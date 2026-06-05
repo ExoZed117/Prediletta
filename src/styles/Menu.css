@@ -22,8 +22,8 @@ html {
   overflow: hidden;
   color: var(--color-light);
   background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
-              url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-  background-size: cover;
+              url('https://res.cloudinary.com/dupoow7pa/image/upload/v1780546648/FondoMenu_djuild.jpg');
+  background-size: top;
   background-position: center;
   background-repeat: no-repeat;
 }

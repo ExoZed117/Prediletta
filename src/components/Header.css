@@ -1,257 +1,336 @@
+/* ==========================================================================
+   1. CONFIGURACIÓN DE VARIABLES Y ESTRUCTURA BASE
+   ========================================================================== */
+:root {
+  --header-height: 80px;
+  --header-height-mobile: 70px;
+  /* Colores de respaldo por si no cargan tus variables globales */
+  --color-text-luxury: #ffffff;
+  --color-accent-gold: #e0a96d;
+}
+
 .header {
-  background: transparent;
   position: fixed;
-  width: 100%;
   top: 0;
-  z-index: 1000;
-  /* Padding base un poco más pequeño para empezar */
-  padding: 1.5rem 0;
-  transition: all 0.3s ease;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background: transparent; /* Totalmente transparente arriba del todo */
+  display: flex;
+  align-items: center;
+  z-index: 1000; /* Siempre al frente de la galería, popups y empanadas */
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  border-bottom: 1px solid transparent;
 }
 
+/* ==========================================================================
+   2. ESTADO SCROLLED (CUANDO BAJAS LA PÁGINA - FONDO OSCURO)
+   ========================================================================== */
 .header.scrolled {
-  background: rgba(0, 0, 0, 0.9);
-  padding: 1rem 0;
-  backdrop-filter: blur(10px);
+  background: rgba(11, 11, 11, 0.90) !important; /* Negro de alta gama traslúcido */
+  height: 70px; /* Se comprime un poco para optimizar la pantalla */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* Sombra marcada para separarlo del contenido */
+  backdrop-filter: blur(12px); /* Efecto cristal esmerilado premium */
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(224, 169, 109, 0.25); /* Fina línea dorada inferior */
 }
 
+/* Estado condicional por propiedad dark */
 .header.dark {
-  background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(8px);
+  background: rgba(11, 11, 11, 0.95);
+  border-bottom: 1px solid rgba(224, 169, 109, 0.15);
 }
 
 .header-container {
+  width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 3rem;
-
-  /* Usamos GRID de 3 columnas para PC: Izquierda - Centro - Derecha */
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  padding: 0 2rem;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
-/* Logo */
+/* ==========================================================================
+   3. LOGOTIPO Y IDENTIDAD VIRTUAL
+   ========================================================================== */
 .logo {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  justify-self: start; /* PC: Pegado a la izquierda */
   text-decoration: none;
+  cursor: pointer;
 }
 
 .logo-img {
-  height: 60px;
+  height: 45px;
   width: auto;
-  transition: all 0.3s ease;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-img {
+  transform: scale(1.05);
 }
 
 .logo-text {
-  font-size: 1.5rem;
-  font-weight: 300;
-  letter-spacing: 3px;
-  color: var(--color-light);
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-  white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-text-luxury); /* Blanco brillante al inicio */
+  transition: color 0.3s ease;
 }
 
-/* Efecto al hacer scroll */
-.header.scrolled .logo-img,
+/* El texto del logo cambia a dorado brillante al bajar */
 .header.scrolled .logo-text {
-  opacity: 0;
-  transform: translateY(-10px);
-  pointer-events: none;
+  color: var(--color-accent-gold);
 }
 
-/* Navegación Desktop */
-.nav {
-  justify-self: center; /* PC: Centrado */
-}
-
+/* ==========================================================================
+   4. NAVEGACIÓN DE ESCRITORIO (PC)
+   ========================================================================== */
 .nav ul {
-  list-style: none;
   display: flex;
-  gap: 3rem;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .nav-link {
-  color: var(--color-light);
-  font-weight: 400;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-  position: relative;
+  color: rgba(255, 255, 255, 0.85); /* Blanco suavizado para legibilidad inicial */
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
   text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0;
+  position: relative;
 }
 
-.nav-link:hover {
-  color: var(--color-accent);
+/* Asegura el color blanco intenso cuando el header se vuelve negro */
+.header.scrolled .nav-link {
+  color: #ffffff;
 }
 
+.nav-link:hover,
+.header.scrolled .nav-link:hover {
+  color: var(--color-accent-gold);
+}
+
+/* Subrayado animado premium que abre desde el centro */
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: -5px;
-  left: 0;
+  bottom: 0;
+  left: 50%;
   width: 0;
-  height: 1px;
-  background: var(--color-accent);
-  transition: width 0.3s ease;
+  height: 2px;
+  background: var(--color-accent-gold);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
 }
 
 .nav-link:hover::after {
   width: 100%;
 }
 
-/* Acciones (Carrito y Menú Móvil) */
+/* ==========================================================================
+   5. BOTONES DE ACCIÓN (CARRITO Y MENÚ HAMBURGUESA)
+   ========================================================================== */
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  justify-self: end; /* PC: Pegado a la derecha */
+  gap: 1.2rem;
 }
 
-/* Botón Carrito */
-.cart-btn {
+.cart-btn, .mobile-menu-btn {
   background: transparent;
   border: none;
-  font-size: 22px;
+  color: #ffffff; /* Siempre blancos sobre fondos oscuros */
+  font-size: 1.25rem;
   cursor: pointer;
   position: relative;
-  padding: 0.5rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  transition: all 0.3s ease;
-  color: var(--color-accent);
-  display: flex; /* Para centrar el icono */
 }
 
-.cart-btn:hover {
-  background: rgba(255, 107, 53, 0.1);
-  color: var(--color-light);
+.cart-btn:hover, .mobile-menu-btn:hover {
+  color: var(--color-accent-gold) !important;
+  transform: scale(1.05);
 }
 
 .cart-badge {
   position: absolute;
-  top: -5px;
-  right: -5px;
-  background: var(--color-accent);
-  color: var(--color-white);
+  top: 2px;
+  right: 2px;
+  background: var(--color-accent-gold);
+  color: #111111; /* Texto oscuro para perfecto contraste dentro del círculo de conteo */
   font-size: 0.7rem;
-  line-height: 1;
-  padding: 0.2rem 0.35rem;
-  border-radius: 999px;
   font-weight: 700;
-  min-width: 18px;
-  text-align: center;
-  border: 2px solid var(--color-dark); /* Pequeño borde para separar */
+  min-width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
-/* Botón Menú Móvil */
+/* Oculto en computadoras */
 .mobile-menu-btn {
-  display: none; /* Oculto en PC */
-  background: none;
-  border: none;
-  color: var(--color-light);
-  font-size: 1.8rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  transition: all 0.3s ease;
+  display: none;
 }
 
-/* Overlay Menú Móvil */
+/* ==========================================================================
+   6. MENÚ LATERAL DESPLEGABLE MÓVIL
+   ========================================================================== */
 .mobile-menu-overlay {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.8); /* Un poco menos oscuro */
-  backdrop-filter: blur(5px);
-  z-index: 999;
-  opacity: 0; visibility: hidden;
-  transition: all 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
 }
-.mobile-menu-overlay.active { opacity: 1; visibility: visible; }
 
-/* Panel Menú Móvil */
-.mobile-menu {
-  position: fixed; top: 0; right: -100%; width: 280px; /* Un poco más angosto */
-  height: 100%;
-  background: var(--color-dark);
-  z-index: 1000;
-  transition: right 0.3s ease;
-  display: flex; flex-direction: column; padding: 2rem;
-  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
-.mobile-menu.active { right: 0; }
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100vh;
+  background: #111111; /* Combinación Dark Luxury */
+  color: #ffffff;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.4);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.mobile-menu.active {
+  transform: translateX(-300px);
+}
 
 .mobile-menu-header {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding-bottom: 1rem;
 }
-.mobile-menu-logo { font-size: 1.2rem; color: var(--color-light); letter-spacing: 2px; font-weight: 300;}
-.mobile-close-btn { background: none; border: none; color: var(--color-light); font-size: 1.8rem; cursor: pointer; padding: 0.5rem; }
 
-.mobile-nav ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+.mobile-menu-logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-accent-gold);
+}
+
+.mobile-close-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.mobile-close-btn:hover {
+  color: var(--color-accent-gold);
+}
+
+.mobile-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 .mobile-nav-link {
-  color: var(--color-light); font-size: 1rem; text-decoration: none;
-  padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: block;
-  letter-spacing: 1px;
+  color: #eeeeee;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  transition: color 0.3s ease, padding-left 0.3s ease;
 }
-.mobile-nav-link:hover { color: var(--color-accent); padding-left: 10px; }
 
-.mobile-actions { margin-top: auto; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+.mobile-nav-link:hover {
+  color: var(--color-accent-gold);
+  padding-left: 8px;
+}
+
+.mobile-actions {
+  margin-top: auto; /* Manda el botón de pagar abajo */
+  padding-top: 2rem;
+}
+
 .mobile-cart-btn {
-  background: transparent; border: 1px solid var(--color-accent); color: var(--color-accent);
-  padding: 0.9rem; width: 100%; border-radius: 4px; cursor: pointer; display: flex; justify-content: center; gap: 0.5rem;
-  font-size: 0.9rem; letter-spacing: 1px; transition: all 0.3s ease;
+  width: 100%;
+  background: var(--color-accent-gold);
+  color: #111111;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  transition: background-color 0.3s ease;
 }
-.mobile-cart-btn:hover { background: var(--color-accent); color: var(--color-light); }
 
+.mobile-cart-btn:hover {
+  background: #ffffff;
+}
 
-/* =========================================
-   RESPONSIVE (Móvil y Tablet)
-   ========================================= */
-
-/* Tablets y celulares grandes */
+/* ==========================================================================
+   7. RESPONSIVE DISPOSITIVOS (MÓVILES Y TABLETS)
+   ========================================================================== */
 @media (max-width: 768px) {
   .header {
-    padding: 1rem 0; /* Header más delgado */
+    height: var(--header-height-mobile);
+    background: rgba(11, 11, 11, 0.4); /* Leve capa oscura por defecto arriba */
+  }
+  
+  .header.scrolled {
+    height: var(--header-height-mobile);
+    background: rgba(11, 11, 11, 0.95) !important; /* Más opaco en móvil para máxima cobertura */
   }
 
-  .header-container {
-    padding: 0 1.5rem;
-    /* Volvemos a Flex para móvil, es más fácil de manejar aquí */
-    display: flex;
-    justify-content: space-between;
-    /* ¡IMPORTANTE! Alinea verticalmente el logo y los iconos */
-    align-items: center;
+  .nav {
+    display: none; /* Oculta links normales */
   }
 
-  /* Ocultamos menú de PC y mostramos el de móvil */
-  .nav { display: none; }
-  .mobile-menu-btn { display: block; }
-
-  /* Ajustamos tamaños del logo */
-  .logo-text { font-size: 1.2rem; letter-spacing: 2px; }
-  .logo-img { height: 50px; }
-
-  /* Juntamos un poco los iconos de la derecha */
-  .header-actions { gap: 1rem; }
-  .cart-btn { font-size: 1.3rem; }
-}
-
-/* Celulares pequeños */
-@media (max-width: 480px) {
-  .header-container {
-    padding: 0 1rem; /* Menos padding lateral */
+  .mobile-menu-btn {
+    display: flex; /* Activa las 3 líneas de menú móvil */
   }
-
-  /* Logo aún más pequeño */
-  .logo-text { font-size: 1rem; letter-spacing: 1px; }
-  .logo-img { height: 40px; gap: 0.5rem; }
-
-  .header-actions { gap: 0.5rem; }
-  .cart-btn { padding: 0.4rem; }
-  .mobile-menu-btn { padding: 0.4rem; font-size: 1.5rem; }
 }

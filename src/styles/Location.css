@@ -1,5 +1,6 @@
+/* Info Section */
 .location-section {
-  padding: 4rem 0;
+  padding: 6rem 0;
   background: #fcfcfc;
 }
 
@@ -24,15 +25,85 @@
   margin: 0 auto 2rem;
 }
 
-.location-info p {
-  color: var(--color-text-light);
-  font-size: 1.1rem;
+.location-info .address {
+  color: var(--color-text);
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
 }
 
+/* Caja contenedora para estructurar los horarios de forma elegante */
+.schedule-box {
+  background: #ffffff;
+  max-width: 450px;
+  margin: 0 auto 2rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--color-border-light, #f0f0f0);
+}
+
+.schedule-box h3 {
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.schedule-box p {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  margin: 0.5rem 0;
+}
+
+.feriados-info {
+  font-style: italic;
+  font-size: 0.85rem !important;
+  color: var(--color-accent) !important;
+  margin-top: 0.75rem !important;
+}
+
+/* Botón de llamada a la acción para abrir la app nativa */
+.maps-link-btn {
+  display: inline-block;
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-text);
+  padding: 1rem 2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.maps-link-btn:hover {
+  background: var(--color-text);
+  color: #fff;
+}
+
+/* Envoltorio del mapa interactivo */
 .map-wrapper {
   margin-top: 3rem;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
   border: 5px solid #fff;
+  background: #eee;
+}
+
+/* Ajuste responsive para celulares */
+@media (max-width: 768px) {
+  .location-section {
+    padding: 4rem 0;
+  }
+  .location-info h2 {
+    font-size: 2rem;
+  }
+  .schedule-box {
+    width: 100%;
+    padding: 1rem;
+  }
 }
