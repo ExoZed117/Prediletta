@@ -154,14 +154,14 @@
       "items": [
         { 
           "name": "ICED LATTE CLÁSICO", 
-          "price": "12 BS", 
+          "price": "14 BS", 
           "desc": "Café espresso y leche fría servidos sobre hielo",
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546523/IceClasico_hoabkb.jpg"
         },
         { "name": "ICED LATTE CARAMEL", "price": "14 BS", "desc": "Café helado con toque de caramelo" ,"image":"https://res.cloudinary.com/dupoow7pa/image/upload/v1780691190/ICED_LATTE_CARAMEL_sv11it.png" },
         { 
           "name": "ORANGE COFFEE", 
-          "price": "14 BS", 
+          "price": "16 BS", 
           "desc": "Sabor cítrico de naranja fusionado con café",
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546520/OrangeCoffe_ru5sqv.jpg"
         },
@@ -282,13 +282,13 @@
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780692558/almendra_kxya0q.png" },
         { 
           "name": "NAPOLEÓN MIL HOJAS", 
-          "price": "15 BS", 
+          "price": "14 BS", 
           "desc": "Milhojas de hojaldre crujiente con crema pastelera o dulce de leche",
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546520/Napoleon_Mil_hojas_ngt2hz.jpg"
         },
         {
           "name": "STRUDEL DE MANZANA",
-          "price": "14 BS",
+          "price": "11 BS",
           "desc": "Fina masa de hojaldre rellena de manzana, canela y pasas",
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546514/StrudelManzana_neanc2.jpg"
         }
@@ -310,18 +310,7 @@
           "desc": "Masa integral doradita rellena de queso", 
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546515/EmpanadaIntegral_szi9qa.jpg" 
         },
-        { 
-          "name": "EMPANADA RELLENO DE CARNE", 
-          "price": "8 BS", 
-          "desc": "Sabroso pino de carne res de la casa en masa horneada", 
-          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546513/WhatsApp_Image_2026-06-03_at_23.40.01_1_loyy65.jpg" 
-        },
-        { 
-          "name": "EMPANADA RELLENO DE POLLO", 
-          "price": "8 BS", 
-          "desc": "Jugoso relleno de pollo desmenuzado y vegetales finos", 
-          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546513/WhatsApp_Image_2026-06-03_at_23.40.00_2_ioj1ub.jpg" 
-        },
+       
         { 
           "name": "CROISSANT DE JAMÓN Y QUESO", 
           "price": "9 BS", 
@@ -349,14 +338,10 @@
         },
         { 
           "name": "HAMBURGUESA CLÁSICA", 
-          "price": "24 BS", 
+          "price": "25 BS", 
           "desc": "Carne casera seleccionada, queso fundido y vegetales frescos", 
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546516/HamburguesaClasica_em4dci.jpg" 
         },
-        { "name": "SÁNDWICH DE LOMITO", 
-        "price": "25 BS", 
-        "desc": "Carne de lomito con tomate fresco y huevo" ,
-          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780692882/lomito_z3bky6.png"},
         { "name": "SÁNDWICH PHILADELPHIA", 
         "price": "29 BS", 
         "desc": "Carne desmechada con queso fundido y vegetales",
