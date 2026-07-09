@@ -207,16 +207,16 @@
           "price": "20 BS", 
           "desc": "Combinación fresca y elegante",
         "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546517/WhatsApp_Image_2026-06-03_at_23.40.06_yapez1.jpg" },
-        { 
-          "name": "QUEQUE INTEGRAL", 
-          "price": "12 BS", 
-          "desc": "Saludable y esponjoso queque integral artesanal",
-          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546517/QuequeIntegral_ry80uk.jpg"
+        {
+          "name": "QUEQUE DE AVENA (Porción)",
+          "price": "6 BS",
+          "desc": "Nutritivo queque a base de avena seleccionada",
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546521/Queque_de_avena_rqpkdk.jpg"
         },
         {
-          "name": "QUEQUE DE AVENA",
-          "price": "12 BS",
-          "desc": "Nutritivo queque a base de avena seleccionada",
+          "name": "QUEQUE DE AVENA (Entero)",
+          "price": "25 BS",
+          "desc": "Nutritivo queque a base de avena seleccionada - Tamaño familiar",
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546521/Queque_de_avena_rqpkdk.jpg"
         }
       ]
@@ -261,18 +261,18 @@
         },
         { 
           "name": "BROWNIE CON HELADO", 
-          "price": "22 BS", 
+          "price": "20 BS", 
           "desc": "Brownie artesanal tibio con helado de tu elección", 
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546517/BrownieHelado_tbyygg.jpg" 
         },
         { 
           "name": "ALFAJOR DE CHOCOLATE", 
-          "price": "8 BS", 
+          "price": "9 BS", 
           "desc": "Masa artesanal con relleno cremoso de chocolate",
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546514/AlfajorChocolate_j13pqx.jpg"
         },
         { "name": "ALFAJOR DE FRUTOS ROJOS CON PISTACHO", 
-          "price": "9 BS", 
+          "price": "10 BS", 
           "desc": "Combinación sofisticada y elegante",
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780692366/alfajor_pis_jlibch.png" },
 
@@ -332,8 +332,14 @@
       "items": [
         { 
           "name": "SÁNDWICH DE POLLO", 
-          "price": "22 BS", 
+          "price": "18 BS", 
           "desc": "Pollo desmenuzado con especias suaves y albahaca", 
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1783622397/atun_iwsmzq.jpg" 
+        },
+        { 
+          "name": "SÁNDWICH DE ATÚN", 
+          "price": "25 BS", 
+          "desc": "Sandwich de atún Suculento ", 
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546515/Sandwich_Pollo_g1g7ls.jpg" 
         },
         { 
@@ -368,33 +374,6 @@
         { "tipo": "1 SABOR", "precio": "8" },
         { "tipo": "2 SABORES", "precio": "14" },
         { "tipo": "3 SABORES", "precio": "20" }
-      ]
-    },
-    {
-      "id": "helados-especiales",
-      "title": "HELADOS ESPECIALES",
-      "availability": "PREGUNTAR DISPONIBILIDAD DEL DÍA",
-      "items": [
-        { 
-          "name": "GUSANITO TROPICAL", 
-          "price": "23 BS", 
-          "desc": "Chocolate + Oreo + Dulce de Leche - Contraste divertido entre lo dulce, ácido y cremoso"
-        },
-        { 
-          "name": "PRIMAVERA", 
-          "price": "25 BS", 
-          "desc": "Frutos Rojos + Chirimoya + Vainilla - Suave, frutal y perfumado"
-        },
-        { 
-          "name": "VERANO", 
-          "price": "25 BS", 
-          "desc": "Maracuyá + Vainilla + Frutos Rojos - Refrescante y ligero"
-        },
-        { 
-          "name": "BANANA SPLIT", 
-          "price": "30 BS", 
-          "desc": "Chocolate + Vainilla + Dulce de Leche - Clásico con banana, crema y salsa"
-        }
       ]
     },
     {
