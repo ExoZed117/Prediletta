@@ -303,6 +303,9 @@
     align-items: center;
     gap: var(--space-5);
   }
+  .drinks--single .drinks__row {
+    grid-template-columns: 1.4fr 1fr;
+  }
   .drinks__row--head {
     display: grid;
     padding-block: var(--space-2);

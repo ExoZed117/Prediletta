@@ -110,7 +110,7 @@ function DrinkTable({ table, addToCart }) {
   return (
     <div className="block">
       <h3>{table.name}</h3>
-      <div className="drinks" role="table" aria-label={table.name}>
+      <div className={`drinks ${table.headers.length > 2 ? '' : 'drinks--single'}`} role="table" aria-label={table.name}>
         <div className="drinks__row drinks__row--head" role="row">
           {table.headers.map((h) => (
             <span key={h} role="columnheader">{h}</span>
@@ -123,10 +123,12 @@ function DrinkTable({ table, addToCart }) {
               <span className="price">{fmtPrice(row.vaso)}</span>
               <AddButton small="Vaso" label={`${row.sabor} (vaso)`} onAdd={() => addToCart({ name: `${row.sabor} (Vaso)`, price: parseFloat(row.vaso) })} />
             </span>
-            <span role="cell" className="drinks__cell">
-              <span className="price">{fmtPrice(row.jarra)}</span>
-              <AddButton small="Jarra" label={`${row.sabor} (jarra)`} onAdd={() => addToCart({ name: `${row.sabor} (Jarra)`, price: parseFloat(row.jarra) })} />
-            </span>
+            {row.jarra && (
+              <span role="cell" className="drinks__cell">
+                <span className="price">{fmtPrice(row.jarra)}</span>
+                <AddButton small="Jarra" label={`${row.sabor} (jarra)`} onAdd={() => addToCart({ name: `${row.sabor} (Jarra)`, price: parseFloat(row.jarra) })} />
+              </span>
+            )}
           </div>
         ))}
       </div>

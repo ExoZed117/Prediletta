@@ -15,12 +15,6 @@
               "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546516/Espresso_igctmx.jpg" 
             },
             { 
-              "name": "ESPRESSO DOBLE", 
-              "price": "14 BS", 
-              "desc": "Doble carga de la esencia pura del café", 
-              "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546520/Espresso_2_s8gglm.jpg" 
-            },
-            { 
               "name": "MACCHIATO", 
               "price": "10 BS", 
               "desc": "Espresso pequeño con un toque de espuma de leche", 
@@ -58,7 +52,7 @@
             },
             { 
               "name": "AFFOGATO", 
-              "price": "20 BS", 
+              "price": "22 BS", 
               "desc": "Bola de helado \"ahogada\" en espresso caliente",
               "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780689656/AFFOGATO_gl0psl.png"
             },
@@ -92,12 +86,11 @@
         {
           "name": "MATES",
           "items": [
-            { "name": "MANZANILLA", "price": "7 BS" },
-            { "name": "ANÍS", "price": "7 BS" },
-            { "name": "FRUTOS ROJOS", "price": "7 BS" },
-            { "name": "CETRÓN", "price": "7 BS" },
-            { "name": "TRIMATE", "price": "7 BS" },
-            { "name": "FLOR DE JAMAICA", "price": "10 BS" }
+            { "name": "MANZANILLA", "price": "8 BS" },
+            { "name": "ANÍS", "price": "8 BS" },
+            { "name": "FRUTOS ROJOS", "price": "9 BS" },
+            { "name": "CETRÓN", "price": "8 BS" },
+            { "name": "TRIMATE", "price": "8 BS" }
           ]
         }
       ]
@@ -114,12 +107,12 @@
         },
         { 
           "name": "FRAPPE DE MOCCA", 
-          "price": "22 BS", 
+          "price": "24 BS", 
           "desc": "Café y chocolate en combinación intensa",
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546513/FrappeMoca_irt17c.jpg"
         },
         { "name": "FRAPPE DE DULCE DE LECHE", 
-        "price": "22 BS", 
+        "price": "24 BS", 
         "desc": "Mezcla cremosa y suave del clásico argentino",
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780690373/Frape_leche_u8mh1b.png" },
         { 
@@ -139,13 +132,9 @@
           "desc": "Refrescante, frutal y ligero",
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780690817/rojos_jel4oc.png" },
         { "name": "FRAPPE DE PISTACHO",
-          "price": "27 BS",
+          "price": "25 BS",
           "desc": "Toque cremoso con sabor único del pistacho", 
-          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780689982/submarino_hmlhai.png" },
-        { "name": "FRAPPE DE BOMBÓN",
-          "price": "30 BS",
-          "desc": "El famoso bombón convertido en frappe",
-          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780690999/bombon_xgh7ly.png" }
+          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780689982/submarino_hmlhai.png" }
       ]
     },
     {
@@ -154,19 +143,19 @@
       "items": [
         { 
           "name": "ICED LATTE CLÁSICO", 
-          "price": "14 BS", 
+          "price": "16 BS", 
           "desc": "Café espresso y leche fría servidos sobre hielo",
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546523/IceClasico_hoabkb.jpg"
         },
-        { "name": "ICED LATTE CARAMEL", "price": "14 BS", "desc": "Café helado con toque de caramelo" ,"image":"https://res.cloudinary.com/dupoow7pa/image/upload/v1780691190/ICED_LATTE_CARAMEL_sv11it.png" },
+        { "name": "ICED LATTE CARAMEL", "price": "18 BS", "desc": "Café helado con toque de caramelo" ,"image":"https://res.cloudinary.com/dupoow7pa/image/upload/v1780691190/ICED_LATTE_CARAMEL_sv11it.png" },
         { 
           "name": "ORANGE COFFEE", 
-          "price": "16 BS", 
+          "price": "18 BS", 
           "desc": "Sabor cítrico de naranja fusionado con café",
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546520/OrangeCoffe_ru5sqv.jpg"
         },
         { "name": "ICED LATTE MOCCA", 
-        "price": "16 BS", 
+        "price": "18 BS", 
         "desc": "Café espresso con dulzor intenso del chocolate", 
         "image":"https://res.cloudinary.com/dupoow7pa/image/upload/v1780691190/ICED_LATTE_CARAMEL_sv11it.png"  },
         { "name": "ICED LATTE CHOC MENTA",
@@ -174,7 +163,7 @@
           "desc": "Café helado con menta fresca y chocolate",
           "image":"https://res.cloudinary.com/dupoow7pa/image/upload/v1780691438/iced_chocomenta_r3dikq.png"},
         { "name": "ICED LATTE DE OREO",
-         "price": "18 BS", 
+         "price": "20 BS", 
          "desc": "Galletas trituradas, leche y café",
          "image":"https://res.cloudinary.com/dupoow7pa/image/upload/v1780546522/Frappe_Oreo_jqcrip.jpg" 
          }
@@ -206,19 +195,7 @@
         { "name": "TORTA DE FRUTOS ROJOS CON PISTACHO", 
           "price": "20 BS", 
           "desc": "Combinación fresca y elegante",
-        "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546517/WhatsApp_Image_2026-06-03_at_23.40.06_yapez1.jpg" },
-        {
-          "name": "QUEQUE DE AVENA (Porción)",
-          "price": "6 BS",
-          "desc": "Nutritivo queque a base de avena seleccionada",
-          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546521/Queque_de_avena_rqpkdk.jpg"
-        },
-        {
-          "name": "QUEQUE DE AVENA (Entero)",
-          "price": "25 BS",
-          "desc": "Nutritivo queque a base de avena seleccionada - Tamaño familiar",
-          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546521/Queque_de_avena_rqpkdk.jpg"
-        }
+        "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546517/WhatsApp_Image_2026-06-03_at_23.40.06_yapez1.jpg" }
       ]
     },
     {
@@ -239,25 +216,9 @@
         },
         { 
           "name": "BROWNIE RED VELVET", 
-          "price": "10 BS", 
+          "price": "11 BS", 
           "desc": "Suave y esponjoso en versión brownie",
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780692179/brownie_red_vutwcy.png"
-        },
-        { "name": "BROWNIE TRES LECHES", 
-        "price": "12 BS", 
-        "desc": "Versión única, húmeda y cremosa",
-          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780691951/3leches_w0tvqz.png" },
-        { 
-          "name": "BROWNIE OREO", 
-          "price": "12 BS", 
-          "desc": "Intensidad de chocolate con galleta Oreo triturada",
-          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546520/BrownieOreo_nq30ar.jpg"
-        },
-        { 
-          "name": "BROWNIE FRAMBUESA", 
-          "price": "12 BS", 
-          "desc": "Contraste perfecto entre el chocolate amargo y el ácido frutal",
-          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546519/BrownieFrambuesa_yyvq8m.jpg"
         },
         { 
           "name": "BROWNIE CON HELADO", 
@@ -332,21 +293,15 @@
       "items": [
         { 
           "name": "SÁNDWICH DE POLLO", 
-          "price": "18 BS", 
+          "price": "22 BS", 
           "desc": "Pollo desmenuzado con especias suaves y albahaca", 
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1783622397/atun_iwsmzq.jpg" 
         },
         { 
           "name": "SÁNDWICH DE ATÚN", 
-          "price": "25 BS", 
+          "price": "29 BS", 
           "desc": "Sandwich de atún Suculento ", 
           "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546515/Sandwich_Pollo_g1g7ls.jpg" 
-        },
-        { 
-          "name": "HAMBURGUESA CLÁSICA", 
-          "price": "25 BS", 
-          "desc": "Carne casera seleccionada, queso fundido y vegetales frescos", 
-          "image": "https://res.cloudinary.com/dupoow7pa/image/upload/v1780546516/HamburguesaClasica_em4dci.jpg" 
         },
         { "name": "SÁNDWICH PHILADELPHIA", 
         "price": "29 BS", 
@@ -360,20 +315,17 @@
       "availability": "PREGUNTAR DISPONIBILIDAD DEL DÍA",
       "type": "icecream",
       "sabores": [
-        { "name": "CHOCOLATE", "price": "8" },
-        { "name": "DULCE DE LECHE", "price": "8" },
-        { "name": "VAINILLA", "price": "8" },
-        { "name": "FRUTOS ROJOS", "price": "8" },
-        { "name": "LIMÓN", "price": "8" },
-        { "name": "OREO", "price": "8" },
-        { "name": "MARACUYÁ", "price": "8" },
-        { "name": "CHIRIMOYA", "price": "8" },
-        { "name": "COPOAZÚ", "price": "8" }
+        { "name": "CHOCOLATE", "price": "9" },
+        { "name": "DULCE DE LECHE", "price": "9" },
+        { "name": "VAINILLA", "price": "9" },
+        { "name": "FRUTOS ROJOS", "price": "9" },
+        { "name": "LIMÓN", "price": "9" },
+        { "name": "OREO", "price": "9" }
       ],
       "bolas": [
-        { "tipo": "1 SABOR", "precio": "8" },
-        { "tipo": "2 SABORES", "precio": "14" },
-        { "tipo": "3 SABORES", "precio": "20" }
+        { "tipo": "1 SABOR", "precio": "9" },
+        { "tipo": "2 SABORES", "precio": "16" },
+        { "tipo": "3 SABORES", "precio": "22" }
       ]
     },
     {
@@ -384,30 +336,24 @@
           "name": "AGUA",
           "headers": ["SABOR", "VASO", "JARRA"],
           "rows": [
-            { "sabor": "MARACUYÁ", "vaso": "8 BS", "jarra": "24 BS" },
-            { "sabor": "TUMBO", "vaso": "6 BS", "jarra": "22 BS" },
-            { "sabor": "COPOAZÚ", "vaso": "6 BS", "jarra": "22 BS" },
-            { "sabor": "PIÑA", "vaso": "6 BS", "jarra": "22 BS" },
-            { "sabor": "FRUTILLA", "vaso": "6 BS", "jarra": "22 BS" },
-            { "sabor": "DURAZNO", "vaso": "8 BS", "jarra": "24 BS" },
-            { "sabor": "SANDÍA", "vaso": "8 BS", "jarra": "24 BS" },
-            { "sabor": "PLÁTANO", "vaso": "6 BS", "jarra": "22 BS" },
-            { "sabor": "LIMONADA", "vaso": "6 BS", "jarra": "22 BS" }
+            { "sabor": "MARACUYÁ", "vaso": "9 BS", "jarra": "27 BS" },
+            { "sabor": "TUMBO", "vaso": "9 BS", "jarra": "27 BS" },
+            { "sabor": "COPOAZÚ", "vaso": "9 BS", "jarra": "27 BS" },
+            { "sabor": "FRUTILLA", "vaso": "9 BS", "jarra": "27 BS" },
+            { "sabor": "DURAZNO", "vaso": "9 BS", "jarra": "27 BS" },
+            { "sabor": "LIMONADA", "vaso": "8 BS", "jarra": "24 BS" }
           ]
         },
         {
           "name": "LECHE",
-          "headers": ["SABOR", "VASO", "JARRA"],
+          "headers": ["SABOR", "VASO"],
           "rows": [
-            { "sabor": "MARACUYÁ", "vaso": "14 BS", "jarra": "30 BS" },
-            { "sabor": "TUMBO", "vaso": "12 BS", "jarra": "28 BS" },
-            { "sabor": "COPOAZÚ", "vaso": "12 BS", "jarra": "28 BS" },
-            { "sabor": "PIÑA", "vaso": "12 BS", "jarra": "28 BS" },
-            { "sabor": "FRUTILLA", "vaso": "12 BS", "jarra": "28 BS" },
-            { "sabor": "DURAZNO", "vaso": "14 BS", "jarra": "30 BS" },
-            { "sabor": "SANDÍA", "vaso": "14 BS", "jarra": "30 BS" },
-            { "sabor": "PLÁTANO", "vaso": "12 BS", "jarra": "28 BS" },
-            { "sabor": "LIMONADA", "vaso": "12 BS", "jarra": "28 BS" }
+            { "sabor": "MARACUYÁ", "vaso": "14 BS" },
+            { "sabor": "TUMBO", "vaso": "14 BS" },
+            { "sabor": "COPOAZÚ", "vaso": "14 BS" },
+            { "sabor": "FRUTILLA", "vaso": "14 BS" },
+            { "sabor": "DURAZNO", "vaso": "14 BS" },
+            { "sabor": "LIMONADA", "vaso": "12 BS" }
           ]
         }
       ]
