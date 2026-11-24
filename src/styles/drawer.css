@@ -1,0 +1,87 @@
+/* Panel lateral reutilizable (menú móvil y carrito) */
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  visibility: hidden;
+  /* La salida es más corta que la entrada */
+  transition: visibility 0s linear 260ms;
+}
+.drawer.is-open {
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.drawer__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 32, 19, 0.55);
+  opacity: 0;
+  transition: opacity 220ms var(--ease-out);
+}
+.drawer.is-open .drawer__scrim {
+  opacity: 1;
+  transition-duration: 300ms;
+}
+
+.drawer__panel {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: min(100%, 440px);
+  display: flex;
+  flex-direction: column;
+  background: var(--cream);
+  color: var(--ink);
+  transform: translateX(100%);
+  transition: transform 260ms var(--ease-drawer);
+}
+.drawer.is-open .drawer__panel {
+  transform: none;
+  transition-duration: 340ms;
+}
+
+.drawer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: var(--header-h);
+  padding-inline: var(--gutter);
+  border-bottom: 1px solid var(--line);
+}
+.drawer__title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius);
+  transition:
+    transform 140ms var(--ease-out),
+    background-color 180ms var(--ease-out);
+}
+.icon-btn:active {
+  transform: scale(0.94);
+}
+@media (hover: hover) and (pointer: fine) {
+  .icon-btn:hover {
+    background: rgba(128, 128, 128, 0.14);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer__panel,
+  .drawer.is-open .drawer__panel {
+    transform: none;
+    opacity: 0;
+    transition: opacity 200ms ease;
+  }
+  .drawer.is-open .drawer__panel {
+    opacity: 1;
+  }
+}

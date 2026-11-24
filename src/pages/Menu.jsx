@@ -1,427 +1,243 @@
-import { useEffect, useState } from 'react';
-import '../styles/Menu.css';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import CartModal from '../components/CartModal';
-import OrderModal from '../components/OrderModal';
+import { useEffect, useRef, useState } from 'react';
 import menuData from '../data/menu.json';
-import { useCart } from "../context/CartContext";
+import { useCart } from '../context/cart';
+import { IconPlus } from '../components/Icons';
+import { cld, fmtPrice } from '../utils/img';
+import '../components/Menu.css';
 
-const Menu = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const { categories } = menuData;
-  const { addToCart, isCartOpen, isOrderModalOpen } = useCart();
+const HERO_BG = 'https://res.cloudinary.com/dupoow7pa/image/upload/v1780546648/FondoMenu_djuild.jpg';
 
-  // Control del scroll para cambiar el comportamiento estético del Header
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      setScrolled(isScrolled);
-    };
+function AddButton({ label, onAdd, small = false }) {
+  return (
+    <button type="button" className={`add-btn ${small ? 'add-btn--text' : ''}`} onClick={onAdd} aria-label={`Añadir ${label} al pedido`}>
+      {small ? <span>{small}</span> : <IconPlus width={18} height={18} />}
+    </button>
+  );
+}
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // ==========================================
-  // FUNCIONES DE RENDERIZADO DE PRODUCTOS
-  // ==========================================
-
-  // Vista especial para la sección de helados
-  const renderIceCreams = (category) => {
-    return (
-      <div className="menu-category">
-        <h3>Elige tu helado</h3>
-        <p className="category-description">Precios por número de bolas:</p>
-        
-        {/* Despliegue informativo de precios base */}
-        <div className="icecream-prices">
-          {category.bolas.map((bola, index) => (
-            <div key={index} className="icecream-option">
-              <span className="bola-type">{bola.tipo}</span>
-              <span className="bola-price">{bola.precio} BS</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Grid de Sabores de Helado */}
-        <div className="icecream-grid">
-          {category.sabores.map((sabor, index) => (
-            <div key={index} className="icecream-item">
-              <div className="icecream-content">
-                <h4>{sabor.name}</h4>
-                <p className="icecream-price-base">{sabor.price} BS por bola</p>
-              </div>
-              <div className="icecream-actions">
-                {category.bolas.map((bola, bolaIndex) => {
-                  const numericPrice = parseFloat(bola.precio);
-                  return (
-                    <button
-                      key={bolaIndex}
-                      className="add-btn icecream-btn"
-                      onClick={() =>
-                        addToCart({
-                          name: `Helado ${sabor.name} (${bola.tipo.toLowerCase()})`,
-                          price: numericPrice,
-                          desc: `Delicioso helado de ${sabor.name.toLowerCase()}`
-                        })
-                      }
-                    >
-                      {bola.tipo.split(' ')[0]} 🍦
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </div>
+function Dish({ item, addToCart, simple = false }) {
+  return (
+    <li className={`dish ${item.image ? 'has-image' : ''}`}>
+      {item.image && (
+        <img className="dish__img" src={cld(item.image, 240)} alt="" width="96" height="96" loading="lazy" />
+      )}
+      <div className="dish__body">
+        <h4>{item.name}</h4>
+        {!simple && item.desc && <p>{item.desc}</p>}
+        {item.note && <p className="dish__note">{item.note}</p>}
       </div>
-    );
-  };
+      <div className="dish__buy">
+        <span className="price">{fmtPrice(item.price)}</span>
+        <AddButton
+          label={item.name}
+          onAdd={() => addToCart({ name: item.name, price: parseFloat(item.price), desc: item.desc })}
+        />
+      </div>
+    </li>
+  );
+}
 
-  // Vista para categorías con subdivisiones (Ej: Tortas, Cafés Especiales)
-  const renderSubcategories = (subcategories) => {
-    return subcategories.map((subcategory, index) => (
-      <div key={index} className="menu-category">
-        <h3>{subcategory.name}</h3>
-        {subcategory.description && (
-          <p className="category-description">{subcategory.description}</p>
-        )}
-        <div className={`menu-items ${subcategory.type === 'grid' ? 'grid-items' : ''}`}>
-          {subcategory.items.map((item, itemIndex) => {
-            const numericPrice = parseFloat(item.price);
-            return (
-              <div key={itemIndex} className={`menu-item ${!item.desc ? 'simple' : ''} ${item.image ? 'has-image' : ''}`}>
-                
-                {/* 1. Imagen (Alineada fija a la Izquierda) */}
-                {item.image && (
-                  <div className="item-image-container">
-                    <img src={item.image} alt={item.name} loading="lazy" />
-                  </div>
-                )}
+function Dishes({ items, addToCart, grid = false, simple = false }) {
+  return (
+    <ul className={`dishes ${grid ? 'dishes--grid' : ''}`}>
+      {items.map((item) => (
+        <Dish key={item.name} item={item} addToCart={addToCart} simple={simple} />
+      ))}
+    </ul>
+  );
+}
 
-                {/* 2. Información (Centro expansivo) */}
-                <div className="item-content">
-                  <h4>{item.name}</h4>
-                  {item.desc && <p>{item.desc}</p>}
-                  {item.note && <p className="availability-note">({item.note})</p>}
-                </div>
-
-                {/* 3. Acciones y Precios (Fijos a la Derecha) */}
-                <div className="item-actions">
-                  <span className="item-price">{item.price}</span>
-                  <button
-                    className="add-btn"
-                    onClick={() =>
-                      addToCart({
-                        name: item.name,
-                        price: numericPrice,
-                        desc: item.desc
-                      })
-                    }
-                  >
-                    Añadir 🛒
-                  </button>
-                </div>
-
-              </div>
-            );
-          })}
-        </div>
-        {subcategory.combinations && (
-          <div className="combination-prices">
-            {subcategory.combinations.map((combo, comboIndex) => {
-              const numericPrice = parseFloat(combo.price);
-              return (
-                <div key={comboIndex} className="combination">
-                  <span>{combo.name}</span>
-                  <div className="combination-actions">
-                    <span className="item-price">{combo.price}</span>
-                    <button
-                      className="add-btn"
-                      onClick={() =>
-                        addToCart({
-                          name: combo.name,
-                          price: numericPrice,
-                        })
-                      }
-                    >
-                      Añadir 🛒
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
+function Combinations({ combos, addToCart }) {
+  return (
+    <ul className="dishes combos">
+      {combos.map((combo) => (
+        <li key={combo.name} className="dish">
+          <div className="dish__body"><h4>{combo.name}</h4></div>
+          <div className="dish__buy">
+            <span className="price">{fmtPrice(combo.price)}</span>
+            <AddButton label={combo.name} onAdd={() => addToCart({ name: combo.name, price: parseFloat(combo.price) })} />
           </div>
-        )}
-      </div>
-    ));
-  };
+        </li>
+      ))}
+    </ul>
+  );
+}
 
-  // Vista estándar para listas planas de productos sin subcategorías
-  const renderItems = (items) => {
-    return (
-      <div className="menu-items">
-        {items.map((item, index) => {
-          const numericPrice = parseFloat(item.price);
-          return (
-            <div key={index} className={`menu-item ${item.image ? 'has-image' : ''}`}>
-              
-              {/* 1. Imagen (Alineada fija a la Izquierda) */}
-              {item.image && (
-                <div className="item-image-container">
-                  <img src={item.image} alt={item.name} loading="lazy" />
-                </div>
-              )}
-
-              {/* 2. Información (Centro) */}
-              <div className="item-content">
-                <h4>{item.name}</h4>
-                {item.desc && <p>{item.desc}</p>}
-                {item.note && <p className="availability-note">({item.note})</p>}
-              </div>
-
-              {/* 3. Acciones (Derecha) */}
-              <div className="item-actions">
-                <span className="item-price">{item.price}</span>
-                <button
-                  className="add-btn"
-                  onClick={() =>
+function IceCreams({ category, addToCart }) {
+  return (
+    <div className="block">
+      <h3>Elige tu helado</h3>
+      <p className="block__desc">Precios por número de bolas</p>
+      <ul className="scoops">
+        {category.bolas.map((bola) => (
+          <li key={bola.tipo}>
+            <span>{bola.tipo.toLowerCase()}</span>
+            <strong>{bola.precio} Bs</strong>
+          </li>
+        ))}
+      </ul>
+      <ul className="dishes">
+        {category.sabores.map((sabor) => (
+          <li key={sabor.name} className="dish dish--flavor">
+            <div className="dish__body">
+              <h4>{sabor.name}</h4>
+              <p>{sabor.price} Bs por bola</p>
+            </div>
+            <div className="dish__buy dish__buy--multi">
+              {category.bolas.map((bola) => (
+                <AddButton
+                  key={bola.tipo}
+                  small={bola.tipo.split(' ')[0]}
+                  label={`helado ${sabor.name.toLowerCase()} (${bola.tipo.toLowerCase()})`}
+                  onAdd={() =>
                     addToCart({
-                      name: item.name,
-                      price: numericPrice,
-                      desc: item.desc
+                      name: `Helado ${sabor.name} (${bola.tipo.toLowerCase()})`,
+                      price: parseFloat(bola.precio),
+                      desc: `Delicioso helado de ${sabor.name.toLowerCase()}`,
                     })
                   }
-                >
-                  Añadir 🛒
-                </button>
-              </div>
-
+                />
+              ))}
             </div>
-          );
-        })}
-      </div>
-    );
-  };
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
-  // Vista en formato de matriz / tabla (Ej: Refrescos Naturales - Vaso o Jarra)
-  const renderTables = (tables) => {
-    return tables.map((table, index) => (
-      <div key={index} className="refrescos-category">
-        <h3>{table.name}</h3>
-        <div className="refrescos-table">
-          <div className="table-header">
-            {table.headers.map((header, headerIndex) => (
-              <span key={headerIndex}>{header}</span>
-            ))}
-            <span>Acción</span>
-          </div>
-          {table.rows.map((row, rowIndex) => {
-            const numericPriceVaso = parseFloat(row.vaso);
-            const numericPriceJarra = parseFloat(row.jarra);
-            return (
-              <div key={rowIndex} className="table-row">
-                <span>{row.sabor}</span>
-                <span>{row.vaso}</span>
-                <span>{row.jarra}</span>
-                <div className="table-actions">
-                  <button
-                    className="add-btn small"
-                    onClick={() =>
-                      addToCart({
-                        name: `${row.sabor} (Vaso)`,
-                        price: numericPriceVaso,
-                      })
-                    }
-                  >
-                    Vaso 🛒
-                  </button>
-                  <button
-                    className="add-btn small"
-                    onClick={() =>
-                      addToCart({
-                        name: `${row.sabor} (Jarra)`,
-                        price: numericPriceJarra,
-                      })
-                    }
-                  >
-                    Jarra 🛒
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    ));
-  };
-
-  // Orquestador secundario para grids y layouts mixtos
-  const renderSections = (sections) => {
-    return sections.map((section, index) => (
-      <div key={index} className="menu-category">
-        <h3>{section.name}</h3>
-        {section.type === 'grid' ? (
-          <>
-            <div className="menu-items grid-items">
-              {section.items.map((item, itemIndex) => {
-                const numericPrice = parseFloat(item.price);
-                return (
-                  <div key={itemIndex} className={`menu-item simple ${item.image ? 'has-image' : ''}`}>
-                    
-                    {item.image && (
-                      <div className="item-image-container">
-                        <img src={item.image} alt={item.name} loading="lazy" />
-                      </div>
-                    )}
-
-                    <div className="item-content">
-                      <h4>{item.name}</h4>
-                    </div>
-                    <div className="item-actions">
-                      <span className="item-price">{item.price}</span>
-                      <button
-                        className="add-btn"
-                        onClick={() =>
-                          addToCart({
-                            name: item.name,
-                            price: numericPrice,
-                          })
-                        }
-                      >
-                        Añadir 🛒
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-            {section.combinations && (
-              <div className="combination-prices">
-                {section.combinations.map((combo, comboIndex) => {
-                  const numericPrice = parseFloat(combo.price);
-                  return (
-                    <div key={comboIndex} className="combination">
-                      <span>{combo.name}</span>
-                      <div className="combination-actions">
-                        <span className="item-price">{combo.price}</span>
-                        <button
-                          className="add-btn"
-                          onClick={() =>
-                            addToCart({
-                              name: combo.name,
-                              price: numericPrice,
-                            })
-                          }
-                        >
-                          Añadir 🛒
-                        </button>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </>
-        ) : (
-          renderItems(section.items)
-        )}
-      </div>
-    ));
-  };
-
-  // ==========================================
-  // ESTRUCTURA DE RENDERIZADO COMPONENTE PRINCIPAL
-  // ==========================================
+function DrinkTable({ table, addToCart }) {
   return (
-    <div className="App">
-      <Header scrolled={scrolled} dark={true} />     
-      <div className="menu-page">
-        
-        {/* Hero Section Banner */}
-        <section className="menu-hero">
-          <div className="menu-hero-background">
-            <div className="background-overlay"></div>
+    <div className="block">
+      <h3>{table.name}</h3>
+      <div className="drinks" role="table" aria-label={table.name}>
+        <div className="drinks__row drinks__row--head" role="row">
+          {table.headers.map((h) => (
+            <span key={h} role="columnheader">{h}</span>
+          ))}
+        </div>
+        {table.rows.map((row) => (
+          <div key={row.sabor} className="drinks__row" role="row">
+            <span className="drinks__name" role="cell">{row.sabor}</span>
+            <span role="cell" className="drinks__cell">
+              <span className="price">{fmtPrice(row.vaso)}</span>
+              <AddButton small="Vaso" label={`${row.sabor} (vaso)`} onAdd={() => addToCart({ name: `${row.sabor} (Vaso)`, price: parseFloat(row.vaso) })} />
+            </span>
+            <span role="cell" className="drinks__cell">
+              <span className="price">{fmtPrice(row.jarra)}</span>
+              <AddButton small="Jarra" label={`${row.sabor} (jarra)`} onAdd={() => addToCart({ name: `${row.sabor} (Jarra)`, price: parseFloat(row.jarra) })} />
+            </span>
           </div>
-          <div className="menu-hero-content">
-            <h1>MENÚ</h1>
-            
-          </div>
-        </section>
+        ))}
+      </div>
+    </div>
+  );
+}
 
-        {/* Barra de Navegación de Categorías (Carrusel Infinito CSS Autorrotativo) */}
-        <nav className="menu-nav">
-          <div className="menu-carousel-wrapper">
-            
-            {/* Bloque Espejo 1 */}
-            <div className="menu-nav-container">
-              {categories.map((category) => (
-                <a key={`${category.id}-1`} href={`#${category.id}`} className="nav-item">
-                  {category.title}
+function Section({ section, addToCart }) {
+  const grid = section.type === 'grid';
+  return (
+    <div className="block">
+      <h3>{section.name}</h3>
+      <Dishes items={section.items} addToCart={addToCart} grid={grid} simple={grid} />
+      {section.combinations && <Combinations combos={section.combinations} addToCart={addToCart} />}
+    </div>
+  );
+}
+
+export default function Menu() {
+  const { categories } = menuData;
+  const { addToCart } = useCart();
+  const [active, setActive] = useState(categories[0].id);
+  const navRef = useRef(null);
+
+  // Categoría activa según el scroll
+  useEffect(() => {
+    const sections = categories.map((c) => document.getElementById(c.id)).filter(Boolean);
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id);
+        });
+      },
+      { rootMargin: '-35% 0px -60% 0px' }
+    );
+    sections.forEach((s) => io.observe(s));
+    return () => io.disconnect();
+  }, [categories]);
+
+  // Mantiene visible el enlace activo en la barra horizontal
+  useEffect(() => {
+    const nav = navRef.current;
+    const link = nav?.querySelector(`[data-id="${active}"]`);
+    if (!nav || !link) return;
+    const left = link.offsetLeft - (nav.clientWidth - link.offsetWidth) / 2;
+    nav.scrollTo({ left, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }, [active]);
+
+  return (
+    <div className="menu-page">
+      <section className="menu-hero on-dark">
+        <img className="menu-hero__bg" src={cld(HERO_BG, 1600)} alt="" />
+        <div className="container menu-hero__content">
+          <span className="eyebrow">La carta</span>
+          <h1>Menú</h1>
+          <p className="lead">Café, frappés, pastelería, masitas, sándwiches, helados y refrescos.</p>
+        </div>
+      </section>
+
+      <nav className="menu-nav" aria-label="Categorías del menú">
+        <div className="menu-nav__scroll" ref={navRef}>
+          <ul>
+            {categories.map((c) => (
+              <li key={c.id}>
+                <a href={`#${c.id}`} data-id={c.id} className="menu-nav__link" aria-current={active === c.id ? 'location' : undefined}>
+                  {c.title.charAt(0) + c.title.slice(1).toLowerCase()}
                 </a>
-              ))}
-            </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
 
-            {/* Bloque Espejo 2 (Clon estructural para efecto infinito continuo en PC) */}
-            <div className="menu-nav-container" aria-hidden="true">
-              {categories.map((category) => (
-                <a key={`${category.id}-2`} href={`#${category.id}`} className="nav-item">
-                  {category.title}
-                </a>
-              ))}
-            </div>
-
-          </div>
-        </nav>
-
-        {/* Renderizado Dinámico de Módulos del Menú */}
-        {categories.map((category) => (
+      <div className="container menu-body">
+        {categories.map((category, index) => (
           <section key={category.id} id={category.id} className="menu-section">
-            <div className="section-container">
-              
-              <div className="section-header">
-                <h2>{category.title}</h2>
-                <div className="section-divider"></div>
-                {category.availability && (
-                  <p className="availability">({category.availability})</p>
-                )}
-              </div>
-
-              {/* Conmutador de renderizado por tipo de dato estructurado */}
-              {category.type === 'icecream' && renderIceCreams(category)}
-              {category.subcategories && renderSubcategories(category.subcategories)}
-              {category.items && !category.tables && !category.sections && renderItems(category.items)}
-              {category.sections && renderSections(category.sections)}
-              {category.tables && (
-                <div className="refrescos-grid">
-                  {renderTables(category.tables)}
-                </div>
+            <header className="menu-section__head">
+              <span className="menu-section__n">{String(index + 1).padStart(2, '0')}</span>
+              <h2>{category.title.charAt(0) + category.title.slice(1).toLowerCase()}</h2>
+              {category.availability && (
+                <p className="menu-section__avail">{category.availability.charAt(0) + category.availability.slice(1).toLowerCase()}</p>
               )}
+            </header>
 
-            </div>
+            {category.type === 'icecream' && <IceCreams category={category} addToCart={addToCart} />}
+
+            {category.subcategories?.map((sub) => (
+              <div key={sub.name} className="block">
+                <h3>{sub.name.charAt(0) + sub.name.slice(1).toLowerCase()}</h3>
+                {sub.description && (
+                  <p className="block__desc">{sub.description.charAt(0) + sub.description.slice(1).toLowerCase()}</p>
+                )}
+                <Dishes items={sub.items} addToCart={addToCart} grid={sub.type === 'grid'} />
+                {sub.combinations && <Combinations combos={sub.combinations} addToCart={addToCart} />}
+              </div>
+            ))}
+
+            {category.items && !category.tables && !category.sections && category.type !== 'icecream' && (
+              <Dishes items={category.items} addToCart={addToCart} />
+            )}
+            {category.sections?.map((s) => (
+              <Section key={s.name} section={s} addToCart={addToCart} />
+            ))}
+            {category.tables?.map((t) => (
+              <DrinkTable key={t.name} table={t} addToCart={addToCart} />
+            ))}
           </section>
         ))}
 
-        {/* Nota Legal / Deslinde de Responsabilidad */}
-        <section className="menu-note">
-          <div className="section-container">
-            <p className="note-text">
-              * Los precios pueden variar. Por favor consulta la disponibilidad del día.
-            </p>
-          </div>
-        </section>
+        <p className="menu-note">* Los precios pueden variar. Por favor consulta la disponibilidad del día.</p>
       </div>
-
-      <Footer />
-      
-      {/* CONTROL DE FLUJO SÍNCRONO: Inyección de Modales globales sin superposición */}
-      {isCartOpen && <CartModal />}
-      {isOrderModalOpen && <OrderModal />}
     </div>
   );
-};
-
-export default Menu;
+}

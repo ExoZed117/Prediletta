@@ -1,0 +1,135 @@
+.hero {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: calc(var(--header-h) + var(--space-6));
+  scroll-margin-top: 0;
+}
+.hero__grid {
+  flex: 1;
+  display: grid;
+  gap: var(--space-7);
+  align-items: end;
+  padding-bottom: var(--space-7);
+}
+.hero__copy {
+  display: grid;
+  gap: var(--space-5);
+  justify-items: start;
+}
+.hero__title {
+  font-size: var(--fs-display);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+.hero__year {
+  display: block;
+  margin-top: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  color: var(--orange);
+}
+.hero__lead {
+  max-width: 34ch;
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+/* El arco del local, como forma */
+.hero__figure {
+  width: min(100%, 420px);
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 999px 999px 0 0;
+  justify-self: end;
+  background: var(--green-900);
+}
+.hero__figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 55%;
+}
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--line-dark);
+  font-size: var(--fs-small);
+  color: var(--cream-soft);
+}
+
+/* Estado abierto/cerrado */
+.open-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+.open-status__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cream-soft);
+}
+.open-status.is-open .open-status__dot {
+  background: #7fd18b;
+}
+
+/* Entrada del hero: una sola vez al cargar */
+.hero__in {
+  animation: hero-in 800ms var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 80ms + 80ms);
+}
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+.hero__figure.hero__in {
+  animation-name: hero-figure;
+  animation-duration: 1100ms;
+}
+@keyframes hero-figure {
+  from {
+    opacity: 0;
+    clip-path: inset(18% 0 0 0);
+  }
+}
+
+@media (min-width: 900px) {
+  .hero__grid {
+    grid-template-columns: 1.25fr 1fr;
+    gap: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+}
+@media (max-width: 899px) {
+  .hero__figure {
+    justify-self: start;
+    width: min(70%, 320px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__in,
+  .hero__figure.hero__in {
+    animation-name: hero-fade;
+    animation-duration: 300ms;
+  }
+  @keyframes hero-fade {
+    from {
+      opacity: 0;
+    }
+  }
+}

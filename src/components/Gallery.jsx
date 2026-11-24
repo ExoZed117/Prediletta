@@ -1,84 +1,33 @@
-import '../styles/Gallery.css'
+import Reveal from './Reveal';
+import { cld } from '../utils/img';
+import './Gallery.css';
+
+const BASE = 'https://res.cloudinary.com/dupoow7pa/image/upload/';
+const PHOTOS = [
+  { src: `${BASE}v1780546523/WhatsApp_Image_2026-06-03_at_23.40.14_1_qurtud.jpg`, alt: 'Interior de Prediletta' },
+  { src: `${BASE}v1780546647/WhatsApp_Image_2026-06-03_at_23.40.16_bie8bm.jpg`, alt: 'Barra de café' },
+  { src: `${BASE}v1780546524/WhatsApp_Image_2026-06-03_at_23.40.15_1_zy2wem.jpg`, alt: 'Zona cómoda para trabajar' },
+  { src: `${BASE}v1780546525/WhatsApp_Image_2026-06-03_at_23.40.15_2_cy4qin.jpg`, alt: 'Terraza exterior' },
+  { src: `${BASE}v1780546513/WhatsApp_Image_2026-06-03_at_23.39.59_rkg3wh.jpg`, alt: 'Detalles artesanales' },
+];
 
 export default function Gallery() {
   return (
-    <section id="galeria" className="gallery-section">
-      <div className="gallery-container">
-        <div className="section-header">
-          <h2>NUESTRO ESPACIO</h2>
-          <div className="section-divider"></div>
-          <p>UN AMBIENTE DISEÑADO PARA LA COMODIDAD Y LA INSPIRACIÓN</p>
-        </div>
-        
-        <div className="gallery-grid">
-          {/* Imagen Grande - Ocupa 2x2 columnas */}
-          <div className="gallery-item gallery-item-large">
-            <div className="gallery-image-placeholder">
-              <img 
-                src="https://res.cloudinary.com/dupoow7pa/image/upload/v1780546523/WhatsApp_Image_2026-06-03_at_23.40.14_1_qurtud.jpg" 
-                alt="Interior Minimalista Prediletta" 
-              />
-            </div>
-            <div className="gallery-overlay">
-              <span></span>
-            </div>
-          </div>
+    <section id="galeria" className="section section--paper gallery">
+      <div className="container">
+        <Reveal className="gallery__head">
+          <span className="eyebrow">02 — Nuestro espacio</span>
+          <h2>Un ambiente pensado para <em>quedarse</em></h2>
+        </Reveal>
 
-          {/* Siguientes imágenes normales */}
-          <div className="gallery-item">
-            <div className="gallery-image-placeholder">
-              <img 
-                src="https://res.cloudinary.com/dupoow7pa/image/upload/v1780546647/WhatsApp_Image_2026-06-03_at_23.40.16_bie8bm.jpg" 
-                alt="Barra de Café Premium" 
-              />
-            </div>
-            <div className="gallery-overlay">
-              <span></span>
-            </div>
-          </div>
-
-          <div className="gallery-item">
-            <div className="gallery-image-placeholder">
-              <img 
-                src="https://res.cloudinary.com/dupoow7pa/image/upload/v1780546524/WhatsApp_Image_2026-06-03_at_23.40.15_1_zy2wem.jpg" 
-                alt="Zona de Trabajo Confortable" 
-              />
-            </div>
-            <div className="gallery-overlay">
-              <span></span>
-            </div>
-          </div>
-
-          <div className="gallery-item">
-            <div className="gallery-image-placeholder">
-              <img 
-                src="https://res.cloudinary.com/dupoow7pa/image/upload/v1780546525/WhatsApp_Image_2026-06-03_at_23.40.15_2_cy4qin.jpg" 
-                alt="Terraza Exterior" 
-              />
-            </div>
-            <div className="gallery-overlay">
-              <span></span>
-            </div>
-          </div>
-
-          {/* Quinta imagen - Repetimos la primera o puedes cambiar este link luego por otra */}
-          <div className="gallery-item">
-            <div className="gallery-image-placeholder">
-              <img 
-                src="https://res.cloudinary.com/dupoow7pa/image/upload/v1780546513/WhatsApp_Image_2026-06-03_at_23.39.59_rkg3wh.jpg" 
-                alt="Detalles Artesanales" 
-              />
-            </div>
-            <div className="gallery-overlay">
-              <span></span>
-            </div>
-          </div>
-        </div>
-
-        <div className="gallery-cta">
-          <button className="gallery-btn">VER GALERÍA COMPLETA</button>
+        <div className="gallery__grid">
+          {PHOTOS.map((p, i) => (
+            <Reveal key={p.src} variant="clip" delay={i * 70} className={`gallery__item gallery__item--${i + 1}`}>
+              <img src={cld(p.src, i === 0 ? 1000 : 700)} alt={p.alt} loading="lazy" />
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

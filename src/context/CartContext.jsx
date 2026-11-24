@@ -1,10 +1,5 @@
-import { createContext, useContext, useMemo, useState } from "react";
-
-const CartContext = createContext(null);
-
-export const useCart = () => useContext(CartContext);
-
-export const WHATSAPP_NUMBER = "+59170345866"; // Tu número de Prediletta
+import { useMemo, useState } from "react";
+import { CartContext } from "./cart";
 
 export const CartProvider = ({ children }) => {
   const [items, setItems] = useState([]);

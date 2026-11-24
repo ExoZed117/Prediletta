@@ -1,138 +1,137 @@
-import { useState } from "react";
-import { useCart, WHATSAPP_NUMBER } from "../context/CartContext";
-import "../styles/OrderModal.css";
+import { useCallback, useRef, useState } from 'react';
+import { useCart } from '../context/cart';
+import { WHATSAPP_NUMBER } from '../config';
+import { useDialog } from '../hooks/useDialog';
+import { IconClose } from './Icons';
+import './OrderModal.css';
 
-const OrderModal = () => {
+export default function OrderModal() {
   const { items, total, clearCart, setIsOrderModalOpen } = useCart();
   const [orderType, setOrderType] = useState(null);
-  const [tableNumber, setTableNumber] = useState("");
+  const [tableNumber, setTableNumber] = useState('');
+  const dialogRef = useRef(null);
 
-  const handleClose = () => setIsOrderModalOpen(false);
+  const handleClose = useCallback(() => setIsOrderModalOpen(false), [setIsOrderModalOpen]);
+  useDialog(true, dialogRef, handleClose);
 
   const handleSendWhatsApp = () => {
-    // 1. Formato de productos ultra seguro y limpio
+    // 1. Formato de productos
     const formattedItems = items
       .map((item) => `${item.qty}x ${item.name} -> ${(item.price * item.qty).toFixed(2)} Bs`)
-      .join("\n");
+      .join('\n');
 
-    // 2. Obtener la hora en formato estricto de 24 horas (Ej: 17:04) para evitar el bug del "p. m."
-    const safeTime = new Date().toLocaleTimeString('es-BO', { 
-      hour: '2-digit', 
-      minute: '2-digit', 
-      hour12: false 
+    // 2. Hora en formato 24 h (evita el bug del "p. m.")
+    const safeTime = new Date().toLocaleTimeString('es-BO', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
     });
 
-    // 3. Construcción del mensaje con strings puros e inmunes a errores de codificación
+    // 3. Mensaje en texto plano
     let message = `PREDILETTA 1825 - NUEVO PEDIDO\n`;
     message += `-----------------------------------------\n\n`;
-    
     message += `DETALLE DE LA ORDEN:\n`;
     message += `${formattedItems}\n\n`;
-    
     message += `-----------------------------------------\n\n`;
-    
     message += `RESUMEN:\n`;
     message += `• Total productos: ${items.reduce((sum, item) => sum + item.qty, 0)}\n`;
     message += `• Total a pagar: ${total.toFixed(2)} Bs\n\n`;
-    
     message += `-----------------------------------------\n\n`;
-    
     message += `ENTREGA:\n`;
-    message += `• Tipo: ${orderType === "local" ? "Comer en el local" : "Para llevar"}\n`;
-    if (orderType === "local" && tableNumber) {
+    message += `• Tipo: ${orderType === 'local' ? 'Comer en el local' : 'Para llevar'}\n`;
+    if (orderType === 'local' && tableNumber) {
       message += `• Ubicacion: Mesa ${tableNumber}\n`;
     }
     message += `• Hora: ${safeTime}\n\n`;
-    
     message += `-----------------------------------------\n`;
     message += `Muchas gracias. Quedo a la espera de la confirmacion.`;
 
-    // 4. Procesamiento seguro de la URL hacia la API de WhatsApp
-    const cleanNumber = WHATSAPP_NUMBER.replace("+", "");
+    // 4. URL hacia WhatsApp
+    const cleanNumber = WHATSAPP_NUMBER.replace('+', '');
     const url = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
-    
-    window.open(url, "_blank");
 
-    // Limpieza final de estados
+    window.open(url, '_blank');
+
+    // 5. Limpieza
     clearCart();
     handleClose();
   };
 
   return (
-    <div className="order-modal-backdrop" onClick={handleClose}>
-      <div className="order-modal" onClick={(e) => e.stopPropagation()}>
-        <button className="close-btn" onClick={handleClose}>×</button>
+    <div className="dialog-backdrop" onClick={handleClose}>
+      <div
+        className="dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="order-title"
+        ref={dialogRef}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button type="button" className="icon-btn dialog__close" onClick={handleClose} aria-label="Cerrar"><IconClose /></button>
 
         {!orderType && (
           <>
-            <h2>🎯 ¿Cómo deseas tu pedido?</h2>
-            <div className="order-options">
-              <button className="option-btn local" onClick={() => setOrderType("local")}>
-                <span className="emoji">🍽️</span>
-                <span className="text">Comer aquí</span>
-                <span className="desc">Disfruta en nuestro local</span>
+            <h2 id="order-title">¿Cómo deseas tu pedido?</h2>
+            <div className="choices">
+              <button type="button" className="choice" onClick={() => setOrderType('local')}>
+                <span className="choice__title">Comer aquí</span>
+                <span className="choice__desc">Disfruta en nuestro local</span>
               </button>
-              <button className="option-btn takeaway" onClick={() => setOrderType("takeaway")}>
-                <span className="emoji">🛍️</span>
-                <span className="text">Para llevar</span>
-                <span className="desc">Recoge tu pedido</span>
+              <button type="button" className="choice" onClick={() => setOrderType('takeaway')}>
+                <span className="choice__title">Para llevar</span>
+                <span className="choice__desc">Recoge tu pedido</span>
               </button>
             </div>
           </>
         )}
 
-        {orderType === "local" && (
+        {orderType === 'local' && (
           <>
-            <h3>🏷️ Número de Mesa</h3>
-            <p className="instruction">Por favor, indica el número de tu mesa para que te lo llevemos:</p>
-            <input
-              type="text"
-              value={tableNumber}
-              onChange={(e) => setTableNumber(e.target.value)}
-              placeholder="Ej: Mesa 5, Ventana, Barra..."
-              className="order-input"
-              maxLength={20}
-              autoFocus
-            />
-            <div className="modal-actions-nav">
-              <button className="back-btn" onClick={() => setOrderType(null)}>Atrás</button>
-              <button className="send-btn" disabled={!tableNumber.trim()} onClick={handleSendWhatsApp}>
-                📱 Enviar Pedido
-              </button>
+            <h2 id="order-title">Número de mesa</h2>
+            <p className="dialog__text">Indica el número de tu mesa para que te lo llevemos.</p>
+            <label className="field">
+              <span className="sr-only">Número o ubicación de la mesa</span>
+              <input
+                type="text"
+                value={tableNumber}
+                onChange={(e) => setTableNumber(e.target.value)}
+                placeholder="Ej: Mesa 5, ventana, barra…"
+                maxLength={20}
+                data-autofocus
+                autoComplete="off"
+              />
+            </label>
+            <div className="dialog__actions">
+              <button type="button" className="btn btn--line" onClick={() => setOrderType(null)}>Atrás</button>
+              <button type="button" className="btn btn--primary" disabled={!tableNumber.trim()} onClick={handleSendWhatsApp}>Enviar pedido</button>
             </div>
           </>
         )}
 
-        {orderType === "takeaway" && (
+        {orderType === 'takeaway' && (
           <>
-            <h3>🛍️ Pedido Para Llevar</h3>
-            <p className="instruction">Tu pedido se procesará inmediatamente. Estará listo en caja en aproximadamente 15 a 20 minutos.</p>
-            <div className="modal-actions-nav">
-              <button className="back-btn" onClick={() => setOrderType(null)}>Atrás</button>
-              <button className="send-btn" onClick={handleSendWhatsApp}>
-                📱 Enviar Pedido
-              </button>
+            <h2 id="order-title">Pedido para llevar</h2>
+            <p className="dialog__text">Tu pedido se procesará de inmediato. Estará listo en caja en aproximadamente 15 a 20 minutos.</p>
+            <div className="dialog__actions">
+              <button type="button" className="btn btn--line" onClick={() => setOrderType(null)}>Atrás</button>
+              <button type="button" className="btn btn--primary" onClick={handleSendWhatsApp}>Enviar pedido</button>
             </div>
           </>
         )}
 
-        <div className="order-summary">
-          <h4>📦 Productos seleccionados:</h4>
-          <div className="summary-list">
-            {items.map((item, index) => (
-              <div key={index} className="summary-item">
-                <span>{item.qty}x {item.name}</span>
+        <div className="summary">
+          <h3>Productos seleccionados</h3>
+          <ul>
+            {items.map((item) => (
+              <li key={item.name}>
+                <span>{item.qty}× {item.name}</span>
                 <span>{(item.price * item.qty).toFixed(2)} Bs</span>
-              </div>
+              </li>
             ))}
-          </div>
-          <div className="summary-total">
-            <strong>Total: {total.toFixed(2)} Bs</strong>
-          </div>
+          </ul>
+          <p className="summary__total"><span>Total</span><strong>{total.toFixed(2)} Bs</strong></p>
         </div>
       </div>
     </div>
   );
-};
-
-export default OrderModal;
+}
